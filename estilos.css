@@ -56,22 +56,21 @@ nav a {
     height: 420px;
     background: #1f2bbf;
     border-radius: 50%;
-    overflow: hidden;
+    overflow: visible; /* 👈 clave */
 }
 
 /* TEXTO GIRANDO (IMAGEN) */
 .texto-circular-img {
     position: absolute;
-   width: 115%;
-    top: -7%;
-    left: -7%;
-    transition: transform 1.5s ease;
+    width: 110%;
+    top: -5%;
+    left: -5%;
 }
 
 /* LOGO CENTRO */
 .logo-centro {
     position: absolute;
-    width: 70%;
+    width: 65%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -82,11 +81,25 @@ nav a {
     transform: rotate(20deg);
 }
 
+/* BLOQUES AZULES RECORTES */
+.recorte {
+    position: absolute;
+    background: #1f2bbf;
+    z-index: 4;
+}
+
+.r1 { top: 38%; left: 0; width: 180px; height: 120px; }
+.r2 { top: 45%; left: 120px; width: 90px; height: 90px; }
+.r3 { top: 40%; right: 120px; width: 100px; height: 80px; }
+.r4 { top: 38%; right: 0; width: 160px; height: 110px; }
+
 /* FONDO */
 .fondo img {
     width: 100%;
     height: auto;
     display: block;
+    position: relative;
+    z-index: 1;
 }
 
 .fondo h2 {
@@ -121,14 +134,3 @@ nav a {
     transform: scale(1.1);
 }
 
-/* BLOQUES AZULES RECORTES */
-.recorte {
-    position: absolute;
-    background: #1f2bbf;
-    z-index: 2;
-}
-
-.r1 { top: 38%; left: 0; width: 180px; height: 120px; }
-.r2 { top: 45%; left: 120px; width: 90px; height: 90px; }
-.r3 { top: 40%; right: 120px; width: 100px; height: 80px; }
-.r4 { top: 38%; right: 0; width: 160px; height: 110px; }
