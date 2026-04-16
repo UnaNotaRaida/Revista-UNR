@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'Chivo', sans-serif;
     font-weight: 300;
-    background: black; /* evita franjas blancas */
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -14,16 +14,16 @@ header {
     align-items: center;
     padding: 25px 50px;
     position: relative;
-    z-index: 10;
+    z-index: 10; /* 👈 siempre arriba */
 }
 
 .logo img {
-    height: 40px;
+    height: 50px;
 }
 
 nav a {
     color: white;
-    margin-left: 20px;
+    margin-left: 25px;
     text-decoration: none;
     font-size: 14px;
     letter-spacing: 1px;
@@ -32,6 +32,7 @@ nav a {
 /* LANDING */
 .landing {
     position: relative;
+    margin-top: -20px; /* 👈 sube un poco el contenido */
 }
 
 /* FRANJA AZUL */
@@ -39,83 +40,104 @@ nav a {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 38%;
+    height: 32%;
     background: #1f2bbf;
-    z-index: 2;
+    z-index: 1;
 }
 
 /* CÍRCULO CENTRAL */
 .circulo-central {
     position: absolute;
-    top: 14%;
+    top: 22%; /* 👈 BAJAMOS para que no lo tape el header */
     left: 50%;
     transform: translate(-50%, -50%);
     width: 480px;
     height: 480px;
     background: #1f2bbf;
     border-radius: 50%;
-    overflow: visible;
     z-index: 5;
 }
 
-/* TEXTO GIRANDO (IMAGEN) */
+/* TEXTO GIRANDO */
 .texto-circular-img {
     position: absolute;
-    width: 110%;
-    top: -5%;
-    left: -5%;
+    width: 115%;
+    top: -7%;
+    left: -7%;
     transition: transform 0.6s ease;
 }
 
 /* LOGO CENTRO */
 .logo-centro {
     position: absolute;
-    width: 65%;
+    width: 60%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* HOVER SUTIL */
+/* HOVER */
 .circulo-central:hover .texto-circular-img {
     transform: rotate(20deg);
 }
 
-/* RECORTES AZULES */
-.recorte {
-    position: absolute;
-    background: #1f2bbf;
-    z-index: 4;
-}
-
-/* alineados tipo "mordida" */
-.r1 { top: 48%; left: 0; width: 220px; height: 140px; }
-.r2 { top: 54%; left: 180px; width: 120px; height: 120px; }
-.r3 { top: 52%; right: 180px; width: 120px; height: 100px; }
-.r4 { top: 48%; right: 0; width: 220px; height: 140px; }
-
 /* FONDO */
 .fondo {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .fondo img {
     width: 100%;
-    height: auto;
     display: block;
 }
 
 /* TEXTO CENTRAL */
 .fondo h2 {
     position: absolute;
-    top: 60%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     letter-spacing: 2px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+/* RECORTES (LOS BLOQUES AZULES) */
+.recorte {
+    position: absolute;
+    background: #1f2bbf;
+    z-index: 3; /* 👈 ENTRE fondo y círculo */
+}
+
+/* AJUSTADOS A TU MOCKUP */
+.r1 {
+    top: 38%;
+    left: 0;
+    width: 220px;
+    height: 140px;
+}
+
+.r2 {
+    top: 46%;
+    left: 140px;
+    width: 120px;
+    height: 120px;
+}
+
+.r3 {
+    top: 45%;
+    right: 140px;
+    width: 120px;
+    height: 100px;
+}
+
+.r4 {
+    top: 38%;
+    right: 0;
+    width: 220px;
+    height: 140px;
 }
 
 /* ZONAS CLICK */
@@ -127,7 +149,7 @@ nav a {
     transition: 0.4s;
 }
 
-/* POSICIONES (base, después afinamos) */
+/* POSICIONES (después las afinamos exacto con tu marca) */
 .z1 { top: 60%; left: 28%; }
 .z2 { top: 55%; right: 22%; }
 .z3 { bottom: 25%; left: 30%; }
@@ -135,7 +157,7 @@ nav a {
 
 /* EFECTO LUZ */
 .zona:hover {
-    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 40%, transparent 70%);
-    filter: blur(10px);
+    background: rgba(255,255,255,0.25);
+    filter: blur(8px);
     transform: scale(1.15);
 }
