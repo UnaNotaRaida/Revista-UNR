@@ -1,0 +1,69 @@
+body.pagina-manifiesto {
+    background-color: #faf7ef;
+    margin: 0;
+}
+
+/* HEADER */
+body.pagina-manifiesto header {
+    background: #1B3A1C;
+}
+
+body.pagina-manifiesto .logo img {
+    filter: brightness(0) invert(1) sepia(0.2) saturate(0.5);
+}
+
+/* CONTENIDO PRINCIPAL */
+.manifiesto-contenido {
+    display: flex;
+    align-items: flex-start;
+    padding: 60px 0;
+    position: relative;
+}
+
+/* IMAGEN IZQUIERDA */
+.manifiesto-imagen {
+    width: 35%;
+    position: sticky;
+    top: 80px;
+    height: 100vh;
+    flex-shrink: 0;
+    margin-left: 5%;
+}
+
+.manifiesto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* TEXTO */
+.manifiesto-texto {
+    width: 55%;
+    padding: 40px 40px 60px 0;
+    margin-left: -80px;
+    position: relative;
+    z-index: 2;
+}
+
+/* TÍTULO MANIFIESTO PNG */
+.titulo-manifiesto {
+    width: 80%;
+    display: block;
+    margin-bottom: 30px;
+    margin-left: 0;
+    mix-blend-mode: difference;
+}
+
+.cuerpo-manifiesto {
+    position: relative;
+}
+
+.cuerpo-manifiesto p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #000000;
+    margin-bottom: 24px;
+    max-width: 420px;
+}

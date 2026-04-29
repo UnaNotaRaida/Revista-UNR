@@ -1,0 +1,176 @@
+body.pagina-rizzoma {
+    margin: 0;
+    background: #000;
+}
+
+/* HEADER */
+body.pagina-rizzoma header {
+    background: #672423;
+}
+
+body.pagina-rizzoma .logo img {
+    filter: brightness(0) invert(1) sepia(0.2) saturate(0.5);
+}
+
+/* HERO */
+.rizzoma-hero {
+    min-height: 100vh;
+    background-image: url('https://res.cloudinary.com/dblpwixyc/image/upload/foto-rizzoma.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* OVERLAY OSCURO */
+.rizzoma-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+}
+
+/* TODO EL CONTENIDO ENCIMA DEL OVERLAY */
+.rizzoma-hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* TÍTULO RIZZOMA */
+.rizzoma-titulo {
+    width: 55%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto 30px;
+    mix-blend-mode: screen;
+}
+
+/* SUBTÍTULO */
+.rizzoma-subtitulo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: white;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+/* ÍCONO GIRATORIO */
+.rizzoma-icono-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+}
+
+.rizzoma-icono {
+    width: 100%;
+    mix-blend-mode: screen;
+    transition: transform 0.6s ease;
+}
+
+.rizzoma-icono-wrapper:hover .rizzoma-icono {
+    animation: girar 2s linear infinite;
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* PREGUNTA */
+.rizzoma-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: white;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.rizzoma-pregunta {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+/* FORMULARIO */
+.rizzoma-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.rizzoma-input {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 14px 20px;
+    outline: none;
+}
+
+.rizzoma-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.rizzoma-input.grande {
+    width: 380px;
+}
+
+.rizzoma-input.chico {
+    width: 260px;
+}
+
+/* BOTÓN ENVIAR */
+.rizzoma-btn {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.rizzoma-btn:hover {
+    background: white;
+    color: black;
+}
+
+/* VOLVER AL PATIO */
+.volver-patio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.volver-patio p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: white;
+    font-weight: 700;
+    margin: 0;
+}
+
+.volver-patio img {
+    width: 120px;
+    mix-blend-mode: screen;
+    transition: transform 0.3s ease;
+}
+
+.volver-patio a:hover img {
+    transform: scale(1.1);
+}
