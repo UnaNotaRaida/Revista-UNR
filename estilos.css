@@ -3,7 +3,7 @@ body {
     font-family: 'Chivo', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-      background: #0000FF;
+    background-color: #faf7ef;
 }
 
 /* HEADER */
@@ -35,21 +35,36 @@ nav a {
     flex-direction: column;
 }
 
-/* FRANJA AZUL */
-.franja-azul {
-    background: #0000FF;
-    width: 100%;
-    height: 420px;
-    position: relative;
-    z-index: 1;
-    flex-shrink: 0;
-}
-
 /* FONDO */
 .fondo {
     position: relative;
     z-index: 2;
 }
+.fondo img {
+    width: 100%;
+    display: block;
+}
+
+/* LOGO MANOS ESTÁTICO */
+.circulo-central {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    z-index: 5;
+}
+
+.logo-centro {
+    width: 100%;
+    display: block;
+    mix-blend-mode: screen;
+}
+
+body.pagina-landing {
+    background-color: #000;
+}
+
 .fondo img {
     width: 100%;
     display: block;
@@ -68,45 +83,6 @@ nav a {
     text-transform: uppercase;
     white-space: nowrap;
     margin: 0;
-}
-
-/* RECORTES */
-.recorte {
-    position: absolute;
-    background: #0000FF;
-    z-index: 3;
-}
-.r1 {
-    top: 600px;
-    left: 30px;
-    width: 200px;
-    height: 90px;
-}
-.r2 {
-    top: 413px;
-    left: 95px;
-    width: 100px;
-    height: 80px;
-}
-.r3 {
-    top: 440px;
-    right: 95px;
-    width: 90px;
-    height: 70px;
-}
-.r4 {
-    top: 380px;
-    right: 0;
-    width: 150px;
-    height: 100px;
-}
-
-.r7 {
-    top: 650px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 180px;
-    height: 95px;
 }
 
 /* ZONAS CLICK */
@@ -190,7 +166,7 @@ nav a {
 /* NOTITA DVD */
 #notita {
 position: fixed;
-    width: 120px;
+    width: 140px;
     z-index: 4;
     pointer-events: none;
     display: block;
@@ -277,4 +253,8 @@ p, .articulo-cuerpo p, .cuerpo-manifiesto p {
     font-weight: 400;
     font-size: 16px;
     line-height: 1.8;
+}
+
+body.pagina-landing {
+    background-color: #0000FF;
 }
