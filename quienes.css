@@ -1,0 +1,91 @@
+body.pagina-quienes {
+    background-color: #faf7ef;
+    margin: 0;
+}
+
+/* HEADER */
+body.pagina-quienes header {
+    background: #C2730C;
+}
+
+body.pagina-quienes .logo img {
+    filter: brightness(0) invert(1) sepia(0.2) saturate(0.5);
+}
+
+/* CONTENIDO */
+.quienes-contenido {
+    display: flex;
+    align-items: flex-start;
+    padding: 60px 0;
+    background-color: #faf7ef;
+}
+
+/* CONTENEDOR */
+.quienes-imagen {
+    width: 35%;
+    position: sticky;
+    top: 80px;
+    margin-left: 5%;
+    flex-shrink: 0;
+}
+
+/* TODAS LAS IMÁGENES */
+.quienes-imagen img {
+    width: 100%;
+    display: block;
+}
+
+/* CONTEXTO PARA SUPERPOSICIÓN */
+.quienes-imagen {
+    position: sticky;
+}
+
+/* IMAGEN HOVER (encima) */
+.img-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* EFECTO */
+.quienes-imagen:hover .img-hover {
+    opacity: 1;
+}
+
+/* TEXTO DERECHA */
+.quienes-texto {
+    width: 45%;
+    padding: 40px 60px 60px 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.titulo-quienes {
+    width: 100%;
+    display: block;
+    margin-bottom: -20px;
+    margin-left: -200px;
+}
+
+/* CUERPO */
+.quienes-texto p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #222;
+    margin-left: -10px;
+    max-width: 550px;
+}
+
+/* VOLVER AL PATIO */
+body.pagina-quienes .volver-patio {
+    background-color: #faf7ef;
+    padding: 60px 0 80px;
+}
+
+body.pagina-quienes .volver-patio p {
+    color: #C2730C;
+}

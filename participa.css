@@ -1,0 +1,136 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #e9e6e1;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+
+/* HEADER */
+.header {
+  background: blue;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo img {
+  height: 30px;
+}
+
+.header__nav a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}
+
+
+/* PARTICIPA */
+.participa {
+  text-align: center;
+  padding: 4rem 1rem;
+  position: relative;
+}
+
+.participa__ilustracion img {
+  max-width: 200px;
+  margin-bottom: 2rem;
+}
+
+.participa__texto h2 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.participa__texto p {
+  font-size: 14px;
+  color: blue;
+}
+
+
+/* CINTA MAIL */
+.mail-ticker {
+  position: absolute;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  z-index: 2;
+  top: 55%;
+  pointer-events: none;
+}
+
+.mail-ticker__track {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: blue;
+
+  /* magia */
+  mix-blend-mode: difference;
+}
+
+.mail-ticker__track span {
+  white-space: nowrap;
+  padding-right: 2rem;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* IMAGEN */
+.participa__imagen {
+  margin-top: 4rem;
+}
+
+.participa__imagen img {
+  max-width: 600px;
+  width: 90%;
+}
+
+
+/* VOLVER */
+.participa__volver {
+  margin-top: 3rem;
+}
+
+.volver-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.volver-btn span {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  color: blue;
+  margin-bottom: 1rem;
+}
+
+.volver-btn img {
+  height: 80px;
+}

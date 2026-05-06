@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Participá — Una Nota Baja</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      
+      <!-- Logo -->
+      <div class="header__logo">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Baja">
+      </div>
+
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- SECCIÓN PARTICIPA -->
+    <section class="participa">
+
+      <!-- Ilustración manos -->
+      <div class="participa__ilustracion">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778086378/manos_azul_aoirid.png" alt="">
+      </div>
+
+      <!-- Texto -->
+      <div class="participa__texto">
+        <h2>¿Querés participar del próximo número?</h2>
+        <p>
+          Envíanos tu proyecto al mail y nos contactamos con vos el próximo mes :)
+        </p>
+      </div>
+
+      <!-- CINTA MAIL -->
+      <div class="mail-ticker">
+        <div class="mail-ticker__track">
+          <span>revistaunr@gmail.com * revistaunr@gmail.com * revistaunr@gmail.com *</span>
+          <span>revistaunr@gmail.com * revistaunr@gmail.com * revistaunr@gmail.com *</span>
+        </div>
+      </div>
+
+      <!-- Imagen principal -->
+      <div class="participa__imagen">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778086422/_DSC1674_zij3ux.jpg" alt="">
+      </div>
+
+      <!-- Volver al patio -->
+      <div class="participa__volver">
+        <button class="volver-btn">
+          <span>VOLVER AL PATIO</span>
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="">
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

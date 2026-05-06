@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quiénes Somos — Una Nota Raída</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="quienes.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-quienes">
+
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
+
+<!-- CONTENIDO -->
+<section class="quienes-contenido">
+
+    <!-- IMAGEN IZQUIERDA -->
+<div class="quienes-imagen">
+    <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777675737/_DSC1923_ltvauj.jpg" class="img-base" alt="Quiénes somos">
+    
+    <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778080964/_DSC1909_db5pji.jpg" class="img-hover" alt="Quiénes somos hover">
+</div>
+
+    <!-- TEXTO DERECHA -->
+    <div class="quienes-texto">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778080474/quienes_somos__me7vnm.png" class="titulo-quienes" alt="Quiénes somos">
+        <p>Nos proponemos crear una revista de divulgación cultural de primera publicación online y luego física que reúna ensayos en distintos formatos (desde pintura hasta poemas) de la comunidad educativa del nivel superior de Rosario. Con la revista buscamos recrear un patio en el que charlamos y debatimos con compañeros. En ese sentido, buscamos obras de estilo ensayístico en formato reseña, obras visuales, narrativa y poesía, que recuperen el bagaje que nos da la educación superior para pensar nuestras instituciones y/o la sociedad en su conjunto. Buscamos crear un documento que recupere estas obras que, generalmente, no se colectivizan y quedan publicadas en foros individuales del internet.</p>
+    </div>
+
+</section>
+
+<!-- VOLVER AL PATIO -->
+<div class="volver-patio">
+    <p>VOLVER AL PATIO</p>
+    <a href="index.html">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="Volver al patio">
+    </a>
+</div>
+
+</body>
+</html>

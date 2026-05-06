@@ -37,33 +37,41 @@ body.pagina-manifiesto .logo img {
     display: block;
 }
 
-/* TEXTO */
+/* CONTENEDOR GENERAL */
 .manifiesto-texto {
-    width: 55%;
-    padding: 40px 40px 60px 0;
-    margin-left: -80px;
+    width: 45%;
+    padding: 40px 60px 60px 80px;
     position: relative;
     z-index: 2;
 }
 
-/* TÍTULO MANIFIESTO PNG */
+/* TÍTULO (no se mueve) */
 .titulo-manifiesto {
-    width: 80%;
+    width: 60%;
+    position: absolute;
+    top: 30px;   /* ajustá según tu padding */
+    left: -60px;  /* alineado con el padding */
     display: block;
-    margin-bottom: 30px;
-    margin-left: 0;
     mix-blend-mode: difference;
 }
 
+/* CUERPO DE TEXTO */
 .cuerpo-manifiesto {
     position: relative;
+    margin-top: 150px; /* espacio para que no choque con el título */
+    margin-left: 0;    /* movelo desde acá si querés */
 }
 
+/* PÁRRAFOS */
 .cuerpo-manifiesto p {
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.8;
     color: #000000;
     margin-bottom: 24px;
-    max-width: 420px;
+    max-width: 550px;
+}
+
+body.pagina-quienes .volver-patio p {
+    color: #1B3A1C;
 }

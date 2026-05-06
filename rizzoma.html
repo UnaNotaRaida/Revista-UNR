@@ -10,17 +10,15 @@
 
 <body class="pagina-rizzoma">
 
-<!-- HEADER -->
-<header>
-    <div class="logo">
-        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="logo">
-    </div>
-    <nav>
-        <a href="#">Participá</a>
-        <a href="#">Números</a>
-        <a href="index.html">Buscar</a>
-    </nav>
-</header>
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
 
 <!-- HERO CON FONDO -->
 <section class="rizzoma-hero">
@@ -38,24 +36,71 @@
 
     <!-- PREGUNTA -->
     <p class="rizzoma-label">PREGUNTA</p>
-    <p class="rizzoma-pregunta">¿Cómo se imaginaron esta sección jaja está medio bola de mono no?</p>
+    <p class="rizzoma-pregunta">Explicá la Guerra Fría, pero solo usando referencias de la cultura popular Argentina. Argumentá tu respuesta.</p>
 
-    <!-- FORMULARIO -->
-    <div class="rizzoma-form">
-        <input type="text" placeholder="Escribí tu respuesta" class="rizzoma-input grande">
-        <input type="text" placeholder="Tu nombre (o anónimo)" class="rizzoma-input chico">
-        <button class="rizzoma-btn">ENVIAR</button>
-    </div>
+<div class="rizzoma-form">
 
-    <!-- VOLVER AL PATIO -->
-    <div class="volver-patio">
-        <p>VOLVER AL PATIO</p>
-        <a href="index.html">
-            <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="Volver al patio">
-        </a>
-    </div>
+<form 
+    action="https://docs.google.com/forms/d/e/1FAIpQLSd31toCfSU8vKaMKa9uPh8ksORCSFPxpy1YuCfpP8-qzUk4oA/formResponse" 
+    method="POST"
+    target="hidden_iframe"
+>
+
+    <textarea 
+        name="entry.2109090816"
+        placeholder="Escribí tu respuesta"
+        class="rizzoma-input grande"
+        required
+    ></textarea>
+
+    <input 
+        type="text" 
+        name="entry.1473372147"
+        placeholder="Tu nombre (o anónimo)" 
+        class="rizzoma-input chico"
+    >
+
+    <button type="submit" class="rizzoma-btn">ENVIAR</button>
+
+</form>
+
+<p id="mensaje-enviado" class="mensaje-enviado">Respuesta enviada ✶</p>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const form = document.querySelector('.rizzoma-form form');
+    const mensaje = document.getElementById('mensaje-enviado');
+
+    form.addEventListener('submit', function() {
+        setTimeout(() => {
+            form.reset();
+
+            mensaje.classList.add('activo');
+
+            setTimeout(() => {
+                mensaje.classList.remove('activo');
+            }, 2500);
+
+        }, 800);
+    });
+
+});
+</script>
+
+</div>
+
+<!-- VOLVER AL PATIO -->
+<div class="volver-patio">
+    <p>VOLVER AL PATIO</p>
+    <a href="index.html">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="Volver al patio">
+    </a>
+</div>
 
 </section>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </body>
 </html>

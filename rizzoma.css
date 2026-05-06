@@ -84,7 +84,7 @@ body.pagina-rizzoma .logo img {
 /* PREGUNTA */
 .rizzoma-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
+    font-size: 13px;
     color: white;
     letter-spacing: 3px;
     font-weight: 700;
@@ -99,13 +99,10 @@ body.pagina-rizzoma .logo img {
     max-width: 500px;
 }
 
-/* FORMULARIO */
-.rizzoma-form {
+.rizzoma-form form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 60px;
+    gap: 10px; /* espacio entre campos */
 }
 
 .rizzoma-input {
@@ -116,6 +113,19 @@ body.pagina-rizzoma .logo img {
     font-size: 13px;
     padding: 14px 20px;
     outline: none;
+}
+
+.rizzoma-form form {
+    align-items: center; /* centra los elementos */
+}
+
+.rizzoma-input {
+    width: 400px;
+    max-width: 90%;
+}
+
+.rizzoma-btn {
+    align-self: center;
 }
 
 .rizzoma-input::placeholder {
@@ -173,4 +183,21 @@ body.pagina-rizzoma .logo img {
 
 .volver-patio a:hover img {
     transform: scale(1.1);
+}
+
+.mensaje-enviado {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.mensaje-enviado.activo {
+    opacity: 1;
+    transform: translateY(0);
 }
