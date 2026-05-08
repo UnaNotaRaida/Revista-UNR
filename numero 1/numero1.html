@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Circular #1 — Una Nota Raída</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --crema: #faf7ef;
+      --azul:  #1a3cff;
+      --negro: #111;
+      --gris:  #555;
+      --mono:  'JetBrains Mono', monospace;
+      --sans:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--crema);
+      color: var(--negro);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      height: 70px;
+      background-color: var(--azul);
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header__inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header__logo img { height: 35px; width: auto; display: block; }
+
+    .header__nav a {
+      color: white;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-left: 25px;
+    }
+    .header__nav a:hover { text-decoration: underline; }
+
+    /* ── PORTADA ── */
+    .portada-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 20px;
+    }
+
+    .flip-container {
+      width: 100%;
+      max-width: 540px;
+      aspect-ratio: 540 / 460;
+      perspective: 1200px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .flip-container:hover .flip-inner,
+    .flip-container.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .flip-front img,
+    .flip-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+    }
+
+    .portada-meta {
+      width: 100%;
+      max-width: 540px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      padding: 0 2px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── CRÉDITOS ── */
+    .creditos-section {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 30px;
+    }
+
+    .creditos-section h2 {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    .creditos-tabla {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .creditos-tabla tr {
+      border-top: 1px solid #ddd;
+    }
+    .creditos-tabla tr:last-child {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .creditos-tabla td {
+      padding: 16px 10px;
+      font-family: var(--mono);
+      font-size: 13px;
+      vertical-align: top;
+    }
+
+    .creditos-tabla td:first-child {
+      color: var(--gris);
+      width: 40%;
+    }
+
+    .creditos-tabla td:last-child {
+      text-align: right;
+      line-height: 1.8;
+    }
+
+    /* ── ÍNDICE ── */
+    .indice-section {
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .indice-foto {
+      width: 40%;
+      min-height: 600px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .indice-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .indice-titulo-vertical {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      pointer-events: none;
+    }
+
+    .indice-titulo-vertical span {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: clamp(80px, 12vw, 140px);
+      color: white;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      letter-spacing: -4px;
+      line-height: 1;
+      mix-blend-mode: difference;
+      user-select: none;
+    }
+
+    .indice-contenido {
+      flex: 1;
+      padding: 50px 40px 50px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .indice-item-editorial {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .indice-item-editorial p {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .indice-item-editorial a {
+      color: var(--negro);
+      text-decoration: none;
+    }
+    .indice-item-editorial a:hover { text-decoration: underline; }
+
+    .indice-seccion {
+      margin-bottom: 28px;
+    }
+
+    .indice-seccion-titulo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .indice-seccion ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .indice-seccion ul li {
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--negro);
+    }
+
+    .indice-seccion ul li a {
+      color: var(--negro);
+      text-decoration: none;
+    }
+    .indice-seccion ul li a:hover {
+      text-decoration: underline;
+      color: var(--azul);
+    }
+
+    .indice-seccion ul li em {
+      font-style: italic;
+    }
+
+    /* ── BOTÓN SIGUIENTE PÁGINA ── */
+    .sig-pagina {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 60px 0 80px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      width: 100%;
+      text-decoration: none;
+      color: var(--negro);
+    }
+
+    .sig-pagina:hover .sig-pagina-icono {
+      transform: translateY(4px);
+    }
+
+    .sig-pagina-icono {
+      transition: transform 0.3s ease;
+    }
+
+    .sig-pagina-icono img {
+      width: 48px;
+      height: auto;
+      display: block;
+    }
+
+    .sig-pagina span {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .header { padding: 0 16px; }
+      .header__nav a { margin-left: 14px; font-size: 11px; }
+
+      .portada-section { padding: 30px 16px 10px; }
+
+      .creditos-section { padding: 0 16px; margin: 40px auto; }
+      .creditos-tabla td { font-size: 12px; padding: 12px 6px; }
+
+      .indice-foto { width: 35%; min-height: 500px; }
+      .indice-contenido { padding: 30px 20px; }
+      .indice-titulo-vertical span { font-size: clamp(60px, 18vw, 100px); }
+      .indice-seccion-titulo { font-size: 12px; }
+      .indice-seccion ul li { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="https://unanotaraida.github.io/Revista-UNR/">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Raída">
+        </a>
+      </div>
+      <nav class="header__nav">
+        <a href="../participa.html">Participá</a>
+        <a href="#">Revistas</a>
+        <a href="#">&#9906; Buscar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- PORTADA -->
+  <section class="portada-section">
+    <div class="flip-container" id="portada-flip">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778208047/tapa_N_1_kmkka5.png" alt="Tapa Circular #1">
+        </div>
+        <div class="flip-back">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778208046/contratapa_n1_zelaw4.png" alt="Contratapa Circular #1">
+        </div>
+      </div>
+    </div>
+    <div class="portada-meta">
+      <span>7 de Mayo 2026</span>
+      <span>Número #1</span>
+    </div>
+  </section>
+
+  <!-- CRÉDITOS -->
+  <section class="creditos-section">
+    <h2>Créditos</h2>
+    <table class="creditos-tabla">
+      <tr>
+        <td>Editoras de<br>Una Nota Raída</td>
+        <td>Ariadna Gorosito<br>Fátima Toloza Maidagán<br>Josefina Rizzo<br>Irene Ercole</td>
+      </tr>
+      <tr>
+        <td>Diseño de página web</td>
+        <td>Helena Brienza</td>
+      </tr>
+      <tr>
+        <td>Fotografías de página</td>
+        <td>Julia Sofia Vega</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ÍNDICE -->
+  <section class="indice-section">
+    <div class="indice-foto">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778208064/foto-manifiesto_asuglz.jpg" alt="Foto índice">
+      <div class="indice-titulo-vertical">
+        <span>ÍNDICE</span>
+      </div>
+    </div>
+
+    <div class="indice-contenido">
+
+      <div class="indice-item-editorial">
+        <p><strong>01.</strong> <em>Nota de editora</em>: <a href="#nota-editorial">Josefina Rizzo</a></p>
+      </div>
+
+      <div class="indice-seccion">
+        <div class="indice-seccion-titulo">CIUDAD</div>
+        <ul>
+          <li><a href="#ciudad-1"><em>Caen los sueños. Muestra colectiva en RIOROSA, Crudo Rosario.</em> Reseña por Gerónimo Tártara.</a></li>
+          <li><a href="#ciudad-2"><em>Cuack.</em> Obra visual por Camila Busti.</a></li>
+          <li><a href="#ciudad-3"><em>Mujeres raídas y puestas.</em> Entrevista por Ariadna Gorosito e Irene Ercole.</a></li>
+        </ul>
+      </div>
+
+      <div class="indice-seccion">
+        <div class="indice-seccion-titulo">CALLE</div>
+        <ul>
+          <li><a href="#calle-1"><em>Título.</em> Nota por Josefina Rizzo.</a></li>
+          <li><a href="#calle-2"><em>¿Estás listx para la experiencia?</em> Ensayo por Gina Tebay.</a></li>
+        </ul>
+      </div>
+
+      <div class="indice-seccion">
+        <div class="indice-seccion-titulo">CASA</div>
+        <ul>
+          <li><a href="#casa-1"><em>Hogar que es refugio.</em> Ensayo por Brisa Bordet.</a></li>
+          <li><a href="#casa-2"><em>Escriba.</em> Narrativa por Mora Rivarossa.</a></li>
+          <li><a href="#casa-3"><em>Fotos encontradas.</em> Obra visual por Luz Acosta.</a></li>
+        </ul>
+      </div>
+
+      <div class="indice-seccion">
+        <div class="indice-seccion-titulo">CAMA</div>
+        <ul>
+          <li><a href="#cama-1"><em>Re blanco.</em> Poema por Fátima Toloza Maidagán.</a></li>
+          <li><a href="#cama-2"><em>Manual de enojo para un culposx.</em> Narrativa por Marianella Iovaldi.</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTÓN SIGUIENTE PÁGINA -->
+  <a class="sig-pagina" href="circular-n1-p2.html">
+    <div class="sig-pagina-icono">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416965/icono_pasar_pagina-08_qqsuiw.png" alt="Siguiente página">
+    </div>
+    <span>Siguiente página</span>
+  </a>
+
+  <script>
+    // Flip también funciona con tap en mobile
+    const flipContainer = document.getElementById('portada-flip');
+    flipContainer.addEventListener('click', () => {
+      flipContainer.classList.toggle('flipped');
+    });
+  </script>
+
+</body>
+</html>
