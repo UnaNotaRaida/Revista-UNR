@@ -1,6 +1,9 @@
+/* =========================
+   PÁGINA MANIFIESTO
+========================= */
+
 body.pagina-manifiesto {
     background-color: #faf7ef;
-    margin: 0;
 }
 
 /* HEADER */
@@ -12,7 +15,10 @@ body.pagina-manifiesto .logo img {
     filter: brightness(0) invert(1) sepia(0.2) saturate(0.5);
 }
 
-/* CONTENIDO PRINCIPAL */
+/* =========================
+   CONTENIDO
+========================= */
+
 .manifiesto-contenido {
     display: flex;
     align-items: flex-start;
@@ -37,7 +43,7 @@ body.pagina-manifiesto .logo img {
     display: block;
 }
 
-/* CONTENEDOR GENERAL */
+/* TEXTO */
 .manifiesto-texto {
     width: 45%;
     padding: 40px 60px 60px 80px;
@@ -45,33 +51,24 @@ body.pagina-manifiesto .logo img {
     z-index: 2;
 }
 
-/* TÍTULO (no se mueve) */
+/* TÍTULO */
 .titulo-manifiesto {
     width: 60%;
     position: absolute;
-    top: 30px;   /* ajustá según tu padding */
-    left: -60px;  /* alineado con el padding */
+    top: 30px;
+    left: -60px;
     display: block;
     mix-blend-mode: difference;
 }
 
-/* CUERPO DE TEXTO */
+/* CUERPO */
 .cuerpo-manifiesto {
     position: relative;
-    margin-top: 150px; /* espacio para que no choque con el título */
-    margin-left: 0;    /* movelo desde acá si querés */
+    margin-top: 150px;
 }
 
-/* PÁRRAFOS */
+/* PÁRRAFOS (solo color y ancho) */
 .cuerpo-manifiesto p {
-    font-family: 'Inter', sans-serif;
-    font-size: 17px;
-    line-height: 1.8;
-    color: #000000;
-    margin-bottom: 24px;
+    color: #000;
     max-width: 550px;
-}
-
-body.pagina-quienes .volver-patio p {
-    color: #1B3A1C;
 }

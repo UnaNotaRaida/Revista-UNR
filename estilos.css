@@ -1,57 +1,47 @@
-body {
-    margin: 0;
-    font-family: 'Chivo', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    background-color: #faf7ef;
-}
+/* =========================
+   LANDING BASE
+========================= */
 
-/* HEADER */
-header {
-    background: transparent;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px;
-    position: relative;
-    z-index: 10;
-}
-.logo img {
-    height: 40px;
-}
-nav a {
-    color: #ffffff;
-    margin-left: 25px;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-/* LANDING */
 .landing {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-/* FONDO */
+/* Fondo */
 .fondo {
     position: relative;
     z-index: 2;
 }
+
 .fondo img {
     width: 100%;
     display: block;
 }
 
-/* LOGO MANOS ESTÁTICO */
+/* Texto "Explorá el patio" */
+.fondo h2 {
+    position: absolute;
+    top: 96px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    letter-spacing: 3px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* =========================
+   LOGO CENTRAL
+========================= */
+
 .circulo-central {
     position: absolute;
-    top: 50%;
+    top: 210px;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 500px;
+    width: 400px;
     z-index: 5;
 }
 
@@ -61,78 +51,64 @@ nav a {
     mix-blend-mode: screen;
 }
 
-body.pagina-landing {
-    background-color: #000;
-}
+/* =========================
+   ZONAS CLICK (botones azules)
+========================= */
 
-.fondo img {
-    width: 100%;
-    display: block;
-}
-
-/* TEXTO EXPLORÁ EL PATIO */
-.fondo h2 {
-    position: absolute;
-    top: 96px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    letter-spacing: 3px;
-    font-weight: 700;
-    font-size: 16px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    margin: 0;
-}
-
-/* ZONAS CLICK */
 .zona {
     position: absolute;
     width: 23px;
     height: 23px;
     background: #0000FF;
-    border-radius: 0;
     transition: all 0.6s ease;
     z-index: 4;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
     text-decoration: none;
     overflow: hidden;
 }
 
+/* TEXTO BOTONES → JetBrains */
 .zona-label {
+    font-family: 'JetBrains Mono', monospace;
     color: white;
-    font-weight: 700;
     font-size: 11px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    text-align: center;
+
     opacity: 0;
     transition: opacity 0.6s ease 0.3s;
+
     position: absolute;
     width: 90%;
+    text-align: center;
     line-height: 1.2;
 }
 
-.z1 { top: 54%; left: 38%; transform: translate(0, 0); }
-.z2 { top: 39%; left: 56%; transform: translate(-50%, 0); }
-.z3 { bottom: 35%; left: 65%; transform: translate(0, 0); }
-.z4 { bottom: 25%; right: 70%; transform: translate(0, 0); }
+/* posiciones */
+.z1 { top: 54%; left: 38%; }
+.z2 { top: 39%; left: 56%; transform: translateX(-50%); }
+.z3 { bottom: 35%; left: 65%; }
+.z4 { bottom: 25%; right: 70%; }
 
-/* EFECTO HOVER - ANIMACIÓN DE EXPANSIÓN */
+/* hover */
 .zona:hover {
     width: 143px;
     height: 63px;
-    background: #0000FF;
 }
 
 .zona:hover .zona-label {
     opacity: 1;
 }
 
-/* REDES SOCIALES */
+/* =========================
+   REDES
+========================= */
+
 .social-links {
     position: absolute;
     bottom: 30px;
@@ -163,98 +139,26 @@ body.pagina-landing {
     height: 100%;
 }
 
-/* NOTITA DVD */
+/* =========================
+   NOTITA
+========================= */
+
 #notita {
-position: fixed;
+    position: fixed;
     width: 140px;
     z-index: 4;
     pointer-events: none;
-    display: block;
 }
 
-/* LOGO MANOS ESTÁTICO */
-.circulo-central {
-    position: absolute;
-    top: 210px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    z-index: 5;
-}
-
-.logo-centro {
-    width: 100%;
-    display: block;
-}
-
-/* VOLVER AL PATIO — global */
-.volver-patio {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 60px 0 80px;
-}
-
-.volver-patio p {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 3px;
-    margin: 0;
-}
-
-.volver-patio img {
-    width: 120px;
-    transition: transform 0.3s ease;
-}
-
-.volver-patio a:hover img {
-    transform: scale(1.1);
-}
-
-/* BOTONES HEADER — global */
-nav a {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 500;
-    color: white;
-    margin-left: 25px;
-    text-decoration: none;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-/* SIGUIENTE NOTA — global */
-.siguiente-nota a {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    color: #111;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    transition: opacity 0.3s ease;
-}
-
-.siguiente-nota a:hover {
-    opacity: 0.6;
-}
-
-.siguiente-nota img {
-    width: 60px;
-}
-
-/* CUERPO DE TEXTO — global */
-p, .articulo-cuerpo p, .cuerpo-manifiesto p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.8;
-}
+/* =========================
+   COLOR DE ESTA PÁGINA
+========================= */
 
 body.pagina-landing {
     background-color: #0000FF;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
 }

@@ -1,173 +1,165 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<title>Nota Raida</title>
-<link rel="stylesheet" href="estilos.css">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Nota Raida</title>
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="estilos.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 </head>
 
 <body class="pagina-landing">
 
-<!-- HEADER -->
-<header>
-    <div class="logo">
-        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="logo">
-    </div>
-    <nav>
-   <a href="participa.html">Participá</a>
-        <a href="#">Números</a>
-        <a href="#">Buscar</a>
-    </nav>
-</header>
+<!-- HEADER DINÁMICO -->
+<div id="header"></div>
+
+<script>
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
 
 <!-- LANDING -->
 <section class="landing">
 
-    <!-- LOGO MANOS ESTÁTICO -->
+    <!-- LOGO MANOS -->
     <div class="circulo-central">
         <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777912845/manillos_sya2da.png" class="logo-centro">
     </div>
 
-    <!-- REDES SOCIALES -->
-    <div class="social-links">
-        <a href="https://www.instagram.com/unanotaraida/" target="_blank" class="social-icon instagram">
-            <svg viewBox="0 0 24 24" fill="white" style="width: 32px; height: 32px;">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.057-1.645.069-4.849.069-3.204 0-3.584-.012-4.849-.069-3.259-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
-            </svg>
-        </a>
-        <a href="mailto:revistaunr@gmail.com" class="social-icon mail">
-            <svg viewBox="0 0 24 24" fill="white">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-            </svg>
-        </a>
-    </div>
+ <div class="social-links">
 
-    <!-- RECORTES AZULES -->
-    <div class="recorte r1"></div>
-    <div class="recorte r2"></div>
-    <div class="recorte r3"></div>
-    <div class="recorte r4"></div>
-    <div class="recorte r5"></div>
-    <div class="recorte r6"></div>
-    <div class="recorte r8"></div>
-    <div class="recorte r9"></div>
+    <!-- INSTAGRAM -->
+    <a href="https://www.instagram.com/unanotaraida/" target="_blank" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="white" width="32" height="32">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.057-1.645.069-4.849.069-3.204 0-3.584-.012-4.849-.069-3.259-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+        </svg>
+    </a>
 
-    <!-- IMAGEN FONDO -->
+    <!-- MAIL -->
+    <a href="mailto:revistaunr@gmail.com" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="white" width="32" height="32">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+    </a>
+
+</div>
+
+    <!-- FONDO -->
     <div class="fondo">
         <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416969/fondo_wjle3b.jpg" alt="fondo">
         <h2>EXPLORÁ EL PATIO</h2>
     </div>
 
-    <!-- ZONAS CLICKEABLES -->
-    <a href="manifiesto.html" class="zona z1">
-        <span class="zona-label">Manifiesto</span>
-    </a>
-    <a href="ultimo.html" class="zona z2">
-        <span class="zona-label">Último<br>Número</span>
-    </a>
-    <a href="rizzoma.html" class="zona z3">
-        <span class="zona-label">Rizzoma</span>
-    </a>
-    <a href="quienes.html" class="zona z4">
-        <span class="zona-label">Quiénes somos</span>
-    </a>
+    <!-- ZONAS -->
+    <a href="manifiesto.html" class="zona z1"><span class="zona-label">Manifiesto</span></a>
+    <a href="ultimo.html" class="zona z2"><span class="zona-label">Último<br>Número</span></a>
+    <a href="rizzoma.html" class="zona z3"><span class="zona-label">Rizzoma</span></a>
+    <a href="quienes.html" class="zona z4"><span class="zona-label">Quiénes somos</span></a>
 
 </section>
 
-<!-- NOTITA QUE REBOTA — canvas para colores sólidos sin blend mode -->
+<!-- NOTITA -->
 <canvas id="notita"></canvas>
 
 <script>
-    const canvas = document.getElementById('notita');
-    const ctx = canvas.getContext('2d');
+window.addEventListener('load', () => {
 
-    /* ── tamaño de la notita ── */
-    const NOTITA_SIZE = 140; /* ← cambiá este valor para agrandar/achicar */
+const canvas = document.getElementById('notita');
+const ctx = canvas.getContext('2d');
 
-    canvas.width  = NOTITA_SIZE;
-    canvas.height = NOTITA_SIZE;
-    canvas.style.cssText = `
-        position: fixed;
-        width: ${NOTITA_SIZE}px;
-        height: ${NOTITA_SIZE}px;
-        z-index: 20;
-        pointer-events: none;
-    `;
+const NOTITA_SIZE = 140;
 
-    /* ── paleta de colores sólidos ── */
-    const COLORES = ['#FFFFFF', '#1B3A1C', '#672423', '#C2730C'];
-    let colorIdx = 0;
+canvas.width = NOTITA_SIZE;
+canvas.height = NOTITA_SIZE;
 
-    /* ── imagen original de la notita ── */
-    const imgOriginal = new Image();
-    imgOriginal.crossOrigin = 'anonymous';
-    imgOriginal.src = 'https://res.cloudinary.com/dblpwixyc/image/upload/v1777912844/nota_fbiskp.png';
+canvas.style.position = 'fixed';
+canvas.style.width = NOTITA_SIZE + 'px';
+canvas.style.height = NOTITA_SIZE + 'px';
+canvas.style.zIndex = 20;
+canvas.style.pointerEvents = 'none';
 
-    function dibujarNotita(color) {
-        ctx.clearRect(0, 0, NOTITA_SIZE, NOTITA_SIZE);
-        /* 1. pintar el color sólido */
-        ctx.fillStyle = color;
-        ctx.fillRect(0, 0, NOTITA_SIZE, NOTITA_SIZE);
-        /* 2. recortar con la forma del PNG (respeta transparencia) */
-        ctx.globalCompositeOperation = 'destination-in';
-        ctx.drawImage(imgOriginal, 0, 0, NOTITA_SIZE, NOTITA_SIZE);
-        /* 3. restaurar modo normal */
-        ctx.globalCompositeOperation = 'source-over';
-    }
+const COLORES = ['#FFFFFF', '#1B3A1C', '#672423', '#C2730C'];
+let colorIdx = 0;
 
-    imgOriginal.onload = () => {
-        dibujarNotita(COLORES[colorIdx]);
-        /* posición inicial: centro del .circulo-central */
+const imgOriginal = new Image();
+imgOriginal.src = 'https://res.cloudinary.com/dblpwixyc/image/upload/v1777912844/nota_fbiskp.png';
+
+function dibujarNotita(color) {
+    ctx.clearRect(0, 0, NOTITA_SIZE, NOTITA_SIZE);
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, NOTITA_SIZE, NOTITA_SIZE);
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.drawImage(imgOriginal, 0, 0, NOTITA_SIZE, NOTITA_SIZE);
+    ctx.globalCompositeOperation = 'source-over';
+}
+
+let x = 100, y = 100;
+let vx = 1.5, vy = 1.2;
+
+imgOriginal.onload = () => {
+    dibujarNotita(COLORES[colorIdx]);
+
+    // Esperamos a que el header cargue antes de posicionar
+    setTimeout(() => {
         const manos = document.querySelector('.circulo-central');
         if (manos) {
             const r = manos.getBoundingClientRect();
-            x = r.left + r.width  / 2 - NOTITA_SIZE / 2 + -1;
-            y = r.top  + r.height / 2 - NOTITA_SIZE / 2 + 9;
-        } else {
-            x = window.innerWidth  / 2 - NOTITA_SIZE / 2;
-            y = window.innerHeight / 2 - NOTITA_SIZE / 2;
+            x = r.left + r.width / 2 - NOTITA_SIZE / 2;
+            y = r.top + r.height / 2 - NOTITA_SIZE / 2.3;
         }
         canvas.style.left = x + 'px';
-        canvas.style.top  = y + 'px';
-    };
+        canvas.style.top = y + 'px';
+    }, 300); // espera 300ms a que el header termine de cargar
+};
 
-    let x = 100, y = 100;
-    let vx = 1.5, vy = 1.2;
-    let started = false;
+let started = false;
 
-    function cambiarColor() {
-        colorIdx = (colorIdx + 1) % COLORES.length;
-        dibujarNotita(COLORES[colorIdx]);
+window.addEventListener('scroll', () => {
+    if (!started && window.scrollY > 10) {
+        started = true;
+        mover();
+    }
+});
+
+function cambiarColor() {
+    colorIdx = (colorIdx + 1) % COLORES.length;
+    dibujarNotita(COLORES[colorIdx]);
+}
+
+function mover() {
+    const maxX = window.innerWidth - NOTITA_SIZE;
+    const maxY = window.innerHeight - NOTITA_SIZE;
+
+    x += vx;
+    y += vy;
+
+    let reboto = false;
+
+    if (x <= 0 || x >= maxX) {
+        vx *= -1;
+        reboto = true;
     }
 
-    window.addEventListener('scroll', () => {
-        if (!started && window.scrollY > 10) {
-            started = true;
-            mover();
-        }
-    });
-
-    function mover() {
-        const maxX = window.innerWidth  - NOTITA_SIZE;
-        const maxY = window.innerHeight - NOTITA_SIZE;
-
-        x += vx;
-        y += vy;
-
-        let reboto = false;
-        if (x <= 0)    { x = 0;    vx =  Math.abs(vx); reboto = true; }
-        if (x >= maxX) { x = maxX; vx = -Math.abs(vx); reboto = true; }
-        if (y <= 0)    { y = 0;    vy =  Math.abs(vy); reboto = true; }
-        if (y >= maxY) { y = maxY; vy = -Math.abs(vy); reboto = true; }
-
-        if (reboto) cambiarColor();
-
-        canvas.style.left = Math.round(x) + 'px';
-        canvas.style.top  = Math.round(y) + 'px';
-
-        requestAnimationFrame(mover);
+    if (y <= 0 || y >= maxY) {
+        vy *= -1;
+        reboto = true;
     }
+
+    if (reboto) cambiarColor();
+
+    canvas.style.left = x + 'px';
+    canvas.style.top = y + 'px';
+
+    requestAnimationFrame(mover);
+}
+
+});
 </script>
 
 </body>

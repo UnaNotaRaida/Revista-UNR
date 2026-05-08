@@ -1,6 +1,9 @@
+/* =========================
+   PÁGINA QUIÉNES SOMOS
+========================= */
+
 body.pagina-quienes {
     background-color: #faf7ef;
-    margin: 0;
 }
 
 /* HEADER */
@@ -12,35 +15,43 @@ body.pagina-quienes .logo img {
     filter: brightness(0) invert(1) sepia(0.2) saturate(0.5);
 }
 
-/* CONTENIDO */
+/* =========================
+   CONTENIDO
+========================= */
+
 .quienes-contenido {
     display: flex;
     align-items: flex-start;
     padding: 60px 0;
-    background-color: #faf7ef;
 }
 
-/* CONTENEDOR */
+/* =========================
+   IMAGEN IZQUIERDA
+========================= */
+
 .quienes-imagen {
     width: 35%;
     position: sticky;
     top: 80px;
     margin-left: 5%;
     flex-shrink: 0;
+
+    /* clave para el hover */
+    position: sticky;
 }
 
-/* TODAS LAS IMÁGENES */
+/* contenedor relativo para superposición */
+.quienes-imagen {
+    position: sticky;
+}
+
+/* imágenes */
 .quienes-imagen img {
     width: 100%;
     display: block;
 }
 
-/* CONTEXTO PARA SUPERPOSICIÓN */
-.quienes-imagen {
-    position: sticky;
-}
-
-/* IMAGEN HOVER (encima) */
+/* imagen hover */
 .img-hover {
     position: absolute;
     top: 0;
@@ -49,12 +60,15 @@ body.pagina-quienes .logo img {
     transition: opacity 0.6s ease;
 }
 
-/* EFECTO */
+/* efecto */
 .quienes-imagen:hover .img-hover {
     opacity: 1;
 }
 
-/* TEXTO DERECHA */
+/* =========================
+   TEXTO DERECHA
+========================= */
+
 .quienes-texto {
     width: 45%;
     padding: 40px 60px 60px 80px;
@@ -62,6 +76,7 @@ body.pagina-quienes .logo img {
     z-index: 2;
 }
 
+/* título */
 .titulo-quienes {
     width: 100%;
     display: block;
@@ -69,21 +84,19 @@ body.pagina-quienes .logo img {
     margin-left: -200px;
 }
 
-/* CUERPO */
+/* párrafos (solo color + ancho) */
 .quienes-texto p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 1.8;
     color: #222;
     margin-left: -10px;
     max-width: 550px;
 }
 
-/* VOLVER AL PATIO */
+/* =========================
+   VOLVER
+========================= */
+
 body.pagina-quienes .volver-patio {
     background-color: #faf7ef;
-    padding: 60px 0 80px;
 }
 
 body.pagina-quienes .volver-patio p {

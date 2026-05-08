@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Rizzoma — Una Nota Raída</title>
-    <link rel="stylesheet" href="estilos.css">
-    <link rel="stylesheet" href="rizzoma.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- ORDEN CORRECTO -->
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="rizzoma.css">
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
 </head>
 
 <body class="pagina-rizzoma">
+
+<!-- HEADER -->
 
 <div id="header"></div>
 
@@ -20,51 +29,76 @@ fetch('header.html')
   });
 </script>
 
-<!-- HERO CON FONDO -->
+<!-- HERO -->
+
 <section class="rizzoma-hero">
 
-    <!-- TÍTULO -->
-    <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416963/rizzoma_bn1tjd.png" class="rizzoma-titulo" alt="Rizzoma">
+<!-- TÍTULO -->
+<img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416963/rizzoma_bn1tjd.png" class="rizzoma-titulo" alt="Rizzoma">
 
-    <!-- SUBTÍTULO -->
-    <p class="rizzoma-subtitulo">Participá del foro y buscá tu respuesta en el próximo número</p>
+<!-- SUBTÍTULO -->
+<p class="rizzoma-subtitulo">Participá del foro y buscá tu respuesta en el próximo número</p>
 
-    <!-- ÍCONO GIRATORIO -->
-    <div class="rizzoma-icono-wrapper">
-        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777426755/Rueda-06_gu4lgi.png" class="rizzoma-icono" alt="ícono">
-    </div>
+<!-- ÍCONO -->
+<div class="rizzoma-icono-wrapper">
+    <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777426755/Rueda-06_gu4lgi.png" class="rizzoma-icono" alt="ícono">
+</div>
 
-    <!-- PREGUNTA -->
-    <p class="rizzoma-label">PREGUNTA</p>
-    <p class="rizzoma-pregunta">Explicá la Guerra Fría, pero solo usando referencias de la cultura popular Argentina. Argumentá tu respuesta.</p>
+<!-- PREGUNTA -->
+<p class="rizzoma-label">PREGUNTA</p>
+<p class="rizzoma-pregunta">
+    Explicá la Guerra Fría, pero solo usando referencias de la cultura popular Argentina. Argumentá tu respuesta.
+</p>
 
+<!-- FORM -->
 <div class="rizzoma-form">
 
-<form 
-    action="https://docs.google.com/forms/d/e/1FAIpQLSd31toCfSU8vKaMKa9uPh8ksORCSFPxpy1YuCfpP8-qzUk4oA/formResponse" 
-    method="POST"
-    target="hidden_iframe"
->
-
-    <textarea 
-        name="entry.2109090816"
-        placeholder="Escribí tu respuesta"
-        class="rizzoma-input grande"
-        required
-    ></textarea>
-
-    <input 
-        type="text" 
-        name="entry.1473372147"
-        placeholder="Tu nombre (o anónimo)" 
-        class="rizzoma-input chico"
+    <form 
+        action="https://docs.google.com/forms/d/e/1FAIpQLSd31toCfSU8vKaMKa9uPh8ksORCSFPxpy1YuCfpP8-qzUk4oA/formResponse" 
+        method="POST"
+        target="hidden_iframe"
     >
 
-    <button type="submit" class="rizzoma-btn">ENVIAR</button>
+        <textarea 
+            name="entry.2109090816"
+            placeholder="Escribí tu respuesta"
+            class="rizzoma-input grande"
+            required
+        ></textarea>
 
-</form>
+        <input 
+            type="text" 
+            name="entry.1473372147"
+            placeholder="Tu nombre (o anónimo)" 
+            class="rizzoma-input chico"
+        >
 
-<p id="mensaje-enviado" class="mensaje-enviado">Respuesta enviada ✶</p>
+        <button type="submit" class="rizzoma-btn">ENVIAR</button>
+
+    </form>
+
+    <!-- MENSAJE -->
+    <p id="mensaje-enviado" class="mensaje-enviado">
+        Respuesta enviada ✶
+    </p>
+
+</div>
+
+<!-- VOLVER -->
+<div class="volver-patio">
+    <p>VOLVER AL PATIO</p>
+    <a href="index.html">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="Volver al patio">
+    </a>
+</div>
+
+</section>
+
+<!-- 👇 IMPORTANTE: fuera del section -->
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<!-- SCRIPT -->
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -73,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mensaje = document.getElementById('mensaje-enviado');
 
     form.addEventListener('submit', function() {
+
         setTimeout(() => {
             form.reset();
 
@@ -83,24 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 2500);
 
         }, 800);
+
     });
 
 });
 </script>
-
-</div>
-
-<!-- VOLVER AL PATIO -->
-<div class="volver-patio">
-    <p>VOLVER AL PATIO</p>
-    <a href="index.html">
-        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="Volver al patio">
-    </a>
-</div>
-
-</section>
-
-<iframe name="hidden_iframe" style="display:none;"></iframe>
 
 </body>
 </html>
