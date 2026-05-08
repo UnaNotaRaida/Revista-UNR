@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nota de editora — Circular #1 — Una Nota Raída</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --crema: #faf7ef;
+      --azul:  #1a3cff;
+      --negro: #111;
+      --gris:  #555;
+      --mono:  'JetBrains Mono', monospace;
+      --sans:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--crema);
+      color: var(--negro);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      height: 70px;
+      background-color: var(--azul);
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header__inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header__logo img { height: 35px; width: auto; display: block; }
+
+    .header__nav a {
+      color: white;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-left: 25px;
+    }
+    .header__nav a:hover { text-decoration: underline; }
+
+    /* ── META ── */
+    .pagina-meta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 30px 0;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── NOTA ── */
+    .nota-section {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 50px 30px 80px;
+    }
+
+    /* Título principal */
+    .nota-titulo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    /* Subtítulos */
+    .nota-subtitulo {
+      font-family: var(--mono);
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-align: center;
+      margin: 48px 0 20px;
+    }
+
+    /* Texto */
+    .nota-section p {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: justify;
+      margin-bottom: 24px;
+    }
+
+    /* Firma */
+    .nota-firma {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-top: 60px;
+      color: var(--gris);
+    }
+
+    /* ── BOTÓN SIGUIENTE PÁGINA ── */
+    .sig-pagina {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 0 80px;
+      text-decoration: none;
+      color: var(--negro);
+    }
+
+    .sig-pagina:hover .sig-pagina-icono {
+      transform: translateY(4px);
+    }
+
+    .sig-pagina-icono {
+      transition: transform 0.3s ease;
+    }
+
+    .sig-pagina-icono svg {
+      width: 48px;
+      height: 48px;
+      stroke: var(--negro);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .sig-pagina span {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .header { padding: 0 16px; }
+      .header__nav a { margin-left: 14px; font-size: 11px; }
+      .pagina-meta { padding: 30px 16px 0; }
+      .nota-section { padding: 40px 16px 60px; }
+      .nota-section p { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="https://unanotaraida.github.io/Revista-UNR/index.html">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Raída">
+        </a>
+      </div>
+      <nav class="header__nav">
+        <a href="https://unanotaraida.github.io/Revista-UNR/participa.html">Participá</a>
+        <a href="https://unanotaraida.github.io/Revista-UNR/ultimo.html">Revistas</a>
+        <a href="#">&#9906; Buscar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- META -->
+  <div class="pagina-meta">
+    <span>7 de Mayo 2026</span>
+    <span>Número #1</span>
+  </div>
+
+  <!-- NOTA DE EDITORA -->
+  <article class="nota-section" id="nota-editorial">
+
+    <h1 class="nota-titulo">Nota de editora</h1>
+
+    <h2 class="nota-subtitulo">Sobre la visión que guía este proyecto</h2>
+
+    <p>"En los pasillos se solía discutir" me dijo la exdirectora de la Escuela de Filosofía en el cumpleaños de la FHYA después de bajarse una Andes roja y dejar reculando en chancletas a un amigo mio que se había animado a hundir el dedo del pie en un pileta de conocimiento de la que ella era casi dueña. "Pero no solamente entre agrupaciones políticas o ideologías distintas; entre estudiantes también". No me malinterpreten, no me guía la melancolía ni tiene esta revista como objetivo un tipo de materialización en nuestra época de un recuerdo ajeno y difuso sobre un momento histórico que no viví. Sin embargo, lo cierto es que esta conversación (o lo que recuerdo de ella porque durante toda la velada estuvimos cabeza a cabeza en copas) me despertó una incomodidad: ¿Dónde se da esa discusión hoy en día?. Los espacios que habito están vacíos, y frente a la crisis actual pocos son los encuentros librados de la obligación de productividad y multiempleo que dejen a los estudiantes libres para divagar en desarrollo de ideas, debate, hipótesis, argumento y refutación en los pasillos. Esta falta naturalmente se convirtió en deseo. A la idea de pasillo le tengo una contrapropuesta que es la de patio como un tercer espacio. Creo que la práctica de la discusión y debate resultan ser el espacio en el que practicas nuestro oficio de pensar y construir, en el que jugamos con las herramientas que nos da lo que estudiamos sin las reglas y límites propia de la rigurosidades de la academia. Es una instancia de formación informal.</p>
+
+    <p>La verdad es que sí existen obras de los estudiantes producto de un debate y reflexión pero creo que son resultado de un proceso individual casi, no colectivo. Luego, estas son publicadas en medios de las escuelas o en medios ajenos a las instituciones. Encuentro dos problemas en esto. El primero es que ninguno es un espacio propiamente de los estudiantes. El segundo es que, como mencione, no vienen de un debate colectivo, no hay una sociabilidad presente. La revista es una política cultural que tiene como sujeto a los estudiantes, cuyo objetivo es el de generar ese tipo de sociabilidad que resulte en herramientas de formación, y para construir imaginarios y sentidos de forma colectiva.</p>
+
+    <h2 class="nota-subtitulo">Sobre el contenido</h2>
+
+    <p>Son bienvenidas todas las producciones escritas y visuales que piensen/ensayen al ser y el mundo, pero no por eso queremos la solemnidad, lo presuntuoso o autoconclusivo que suele acompañar a este tipo de producciones. También queremos la sátira y la parodia, que son herramientas necesarias en la búsqueda del conocimiento y la verdad, pero sin perder el análisis y la profundidad del debate detrás de aquellos estudios que tienen como objetivo la trascendencia.</p>
+
+    <h2 class="nota-subtitulo">Sobre las cosas que son eternas y hermosas</h2>
+
+    <p>"No nacimos solo para nosotros mismos". Creamos esta revista junto a Ariadna Gorodsito, Fátima Toloza e Irene Ercole como respuesta a la falta de un espacio editorial que sea DE los estudiantes PARA los estudiantes, y a estas mujeres increíbles les agradezco no solo su participación en este sueño, sino también su amistad. ¿Qué más hay en la vida que juntarse con otras personas a compartir y crear?.</p>
+
+    <p>Quiero agradecer a todas las personas que participaron y compartieron sus obras, gracias al deseo del conocimiento y a la voluntad de creación a pesar de la destrucción a nuestro alrededor.</p>
+
+    <p>Gracias, ante todo, a la educación pública.</p>
+
+    <div class="nota-firma">Josefina Rizzo</div>
+
+  </article>
+
+  <!-- BOTÓN SIGUIENTE PÁGINA -->
+  <a class="sig-pagina" href="circular-n1-p3.html">
+    <div class="sig-pagina-icono">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6 L10 42 L38 42 L38 14 L30 6 Z"/>
+        <polyline points="30,6 30,14 38,14"/>
+        <line x1="16" y1="20" x2="32" y2="20"/>
+        <line x1="16" y1="26" x2="32" y2="26"/>
+        <line x1="16" y1="32" x2="26" y2="32"/>
+      </svg>
+    </div>
+    <span>Siguiente página</span>
+  </a>
+
+</body>
+</html>

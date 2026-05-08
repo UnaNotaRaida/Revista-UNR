@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calle — Circular #1 — Una Nota Raída</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --crema: #faf7ef;
+      --azul:  #1a3cff;
+      --negro: #111;
+      --gris:  #555;
+      --gris-claro: #ddd;
+      --mono:  'JetBrains Mono', monospace;
+      --sans:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--crema);
+      color: var(--negro);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      height: 70px;
+      background-color: var(--azul);
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header__inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo img { height: 35px; width: auto; display: block; }
+    .header__nav a {
+      color: white;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-left: 25px;
+    }
+    .header__nav a:hover { text-decoration: underline; }
+
+    /* ── META ── */
+    .pagina-meta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 30px 0;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── TÍTULO DE SECCIÓN ── */
+    .seccion-titulo {
+      max-width: 720px;
+      margin: 50px auto 0;
+      padding: 0 30px 12px;
+      border-bottom: 2px solid var(--negro);
+      text-align: center;
+    }
+    .seccion-titulo h1 {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .seccion-titulo .seccion-subtitulo {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 2px;
+      margin-top: 6px;
+    }
+
+    /* ── NOTA ── */
+    .nota {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 30px;
+    }
+
+    .nota + .nota {
+      border-top: 1px solid var(--gris-claro);
+      padding-top: 60px;
+    }
+
+    /* ── CABECERA DE NOTA ── */
+    .nota-cabecera {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .nota-autor-foto {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .nota-cabecera-texto {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .nota-titulo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .nota-tipo {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gris);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .nota-autor-nombre {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+    }
+
+    /* ── CUERPO ── */
+    .nota-cuerpo p {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--negro);
+      margin-bottom: 20px;
+    }
+
+    .nota-cuerpo blockquote {
+      border-left: 3px solid var(--azul);
+      padding-left: 20px;
+      margin: 28px 0;
+      font-style: italic;
+      color: var(--gris);
+    }
+
+    /* ── IMÁGENES ── */
+    .nota-imagen {
+      margin: 32px 0;
+    }
+    .nota-imagen img {
+      width: 100%;
+      display: block;
+    }
+    .nota-imagen--medio img {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .nota-imagen figcaption {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gris);
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* ── POEMA ── */
+    .nota-poema {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.9;
+      font-style: italic;
+      color: var(--gris);
+      margin: 32px 0;
+      padding-left: 40px;
+    }
+
+    .nota-poema .poema-autor {
+      font-style: normal;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-top: 12px;
+      display: block;
+    }
+
+    /* ── PLACEHOLDER NOTA ── */
+    .nota-placeholder {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 40px 30px;
+      border: 1px dashed var(--gris-claro);
+      text-align: center;
+      color: var(--gris);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    /* ── SIGUIENTE PÁGINA ── */
+    .sig-pagina {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 60px 0 80px;
+      text-decoration: none;
+      color: var(--negro);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .sig-pagina-icono svg {
+      width: 48px;
+      height: 48px;
+      fill: none;
+      stroke: var(--negro);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .sig-pagina:hover { opacity: 0.6; }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="index.html">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Raída">
+        </a>
+      </div>
+      <nav class="header__nav">
+        <a href="participa.html">Participá</a>
+        <a href="numeros.html">Números</a>
+        <a href="#">Buscar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- META -->
+  <div class="pagina-meta">
+    <span>7 de Mayo 2026</span>
+    <span>Número #1</span>
+  </div>
+
+  <!-- TÍTULO SECCIÓN -->
+  <div class="seccion-titulo">
+    <h1>Calle</h1>
+    <p class="seccion-subtitulo">Discurrir y movimiento</p>
+  </div>
+
+<!-- NOTA 1 — JOSEFINA RIZZO -->
+  <article class="nota" id="calle-1">
+
+    <div class="nota-cabecera">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778250952/nota_foto_joc-07_f8hts3.png"
+           alt="Josefina Rizzo" class="nota-autor-foto">
+      <div class="nota-cabecera-texto">
+        <div class="nota-tipo">Ensayo</div>
+        <div class="nota-titulo">Piquito: el problema de la imagen de la mujer en la cultura occidental</div>
+        <div class="nota-autor-nombre">Josefina Rizzo</div>
+      </div>
+    </div>
+
+    <div class="nota-cuerpo">
+
+      <p>Hubo un día de abril en el que Iren, Fati y yo nos encontramos en Pichincha para chusmear el primer ensayo general de la obra de las pibas de Mujer Puesta que se estrenó este 3 de mayo. Una vez finalizada la puesta en escena, volviendo hacia el centro recorrimos las calles del barrio buscando responder la pregunta que estructura la obra, la de la relación entre la mujer y la locura. Pero nuestro nudo problemático no es solo ese, sino por la representación de esa relación. Llegamos a una conclusión: la cultura occidental está obsesionada con la mujer que sufre.</p>
+
+      <p>Mi primer encuentro con esas representaciones en la cultura (y acá con cultura me refiero en su sentido artístico) se dio a una temprana edad a partir de las fotos aesthetic de Tumblr. Para los que no saben, el término aesthetic viene de ahí y fue la primera red social que volvió a todo, identidad, problema de salud mental, afición, todo, en una estética (rol social que cumple TikTok ahora). Entonces podías poner "depression aesthetic" en el buscador y te salían posts de una chica llorando, fumando, con alguna frase depresiva en inglés. Y en blanco y negro obvio. La estética, recurso visual del que dispone una obra, se despega de esta a partir de la pérdida de la función social del arte. Quiero decir que la estética deja de ser el medio a través del cual representamos la realidad, para pasar a ser un estudio, un valor, una búsqueda en sí misma, permitida por las nuevas instituciones que se van formando a lo largo de la modernidad como lo son el museo, la galería, la figura del coleccionista (Bürger, 1987). Es a partir de este fenómeno, que vemos una irrupción de la estética en ámbitos que no le son propios, como lo son la política y el mercado (Benjamin, 1935). Lo de Tumblr era una estetización exacerbada. ¿A qué me refiero con estetizar? A llevar las reglas que rigen la estética (lo visualmente placentero) a otros ámbitos para que generen el impacto sobre los sentidos y la mente que tiene el arte. Esa red social llegó a estetizar los grandes temas de la humanidad como lo son: la locura, la enfermedad mental, la depresión, etc. Los volvió una marca, de alguna manera.</p>
+
+      <figure class="nota-imagen">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778250095/unnamed_cefmz7.jpg" alt="Imagen ilustrativa">
+      </figure>
+
+      <p>Vuelvo a afirmar lo siguiente: no hay nada que le guste más a la estética occidental que representar a una mujer débil y moribunda. Discutiendo eso mientras caminábamos, les comenté a las pibas de un comentario que llamó mi atención en el foro internacional para el debate y discurso público (Twitter). Se trataba de una cita foto de Bella Hadid tirada sobre la camilla de un hospital llorando y abrazando a su madre, pero que sorprendentemente, a pesar del estado crítico de salud, ella no puede evitar tirar carita y cuerpito. Hace piquito y levanta las sábanas para mostrar la cinturita. El tweet en cuestión hablaba de la discusión en la crítica literaria alrededor de la romantización del dolor y muerte femenina, y ponían de ejemplo al caso del personaje Ofelia, a quien comparan con las fotos de la modelo. Investigando un poco me encontré con una cantidad de textos y crítica literaria feminista que trata este tema y que se hacen las mismas preguntas que las que guían este trabajo. En Hamlet, Ofelia es el personaje que viene a representar la miseria e histeria que lleva a la muerte, siendo el episodio de psicosis en la corte y su muerte por ahogamiento en un río las escenas con más repercusión cultural. Así, su figura se vuelve la encarnación de la melancolía (o locura) en el plano estético.</p>
+
+      <figure class="nota-imagen">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778217258/WhatsApp_Image_2026-05-07_at_21.03.09_kfz89k.jpg" alt="Ofelia">
+      </figure>
+
+      <p>Magda Romanska, en <em>NecrOphelia: Death, Femininity and the Making of Modern Aesthetics</em>, investiga la conformación de la estética necrofílica que caracterizó al siglo XIX (Romanska, 2005). Hasta el romanticismo el cuerpo y la sexualidad se pensaban como opuestos a la muerte y la decadencia. Es a partir de ese siglo que la sensibilidad de la época hace que el amor ya no sea opuesto a la eternidad, sino un tipo de eternidad en sí misma (pensemos en la imagen de cuerpos abrazados sobre las tumbas). Los imaginarios artísticos de la época conciben lo erótico como algo tocado por la muerte y viceversa. Es en ese juego que el lugar que encuentran el eros y la muerte para tocarse es a través de la imagen del cuerpo de una mujer. En gestos que son al mismo tiempo indicios tanto de muerte como de un orgasmo. Esta erotización de la mujer muerta y viceversa, la transformación del cuerpo de una mujer en un cadáver atractivo eróticamente, pasa a ser la "moda" en la cultura visual del momento, llegando al punto de que E. A. Poe declara: "la muerte de una mujer hermosa es, sin lugar a duda, el tema más poético del mundo" (Metodo de composicion, p.5). En este contexto, la figura de Ofelia pasa de ser asociada con la enfermedad mental a ser un objeto erótico, dejándonos entrever así una fascinación de la época con la "fragilidad" de la mujer. A partir de que su figura entra al mundo de las artes visuales, estas representaciones se volvieron el modelo de perfección femenina. La imagen más difundida de Ofelia es la del cuadro prerrafaelita de Millais. Elizabeth Siddal, la modelo que usa de musa el pintor era muy demandada del momento, buscada por su palidez, su mirada nostálgica y distante, su fragilidad mórbida. Claro, todos atributos de alguien moribundo (recordemos que el modelo de belleza de la época era el look de la tuberculosis). Los imaginarios artísticos tienen una influencia que va más allá de la imagen, que dictamina qué es lo bello y, consecuentemente, libran una dictadura sobre los cuerpos. El de las mujeres particularmente.</p>
+
+      <p>Hace unas semanas ya que la serie de HBO Girls tuvo un resurgimiento que la puso al centro de la conversación online, y esto se debe a la publicación de las memorias de su creadora, Lena Dunham. Yo creo que ella es la Malena Pichot de los yankees, es decir, que ocupan el mismo rol socialmente hablando (casi. Dunham no puede crear conceptos de la manera que Pichot puede dar una entrevista, denunciar un "puente peneano" y que después eso se vuelva una categoría de la cultura popular para analizar el comportamiento de los varones. Esto no aporta nada a la reflexión, solamente me gustaría dejar en claro que Malena es mejor). Hannah, el personaje principal de la serie, también pone a su cuerpo, su salud mental y sus experiencias border al centro de la escena, pero estas no tienen nada que ver con lo "delicado" de una mujer, sino todo lo contrario. Ella es una mujer monstruo. "Feminismo grotesco" es como califica la serie la videoensayista Broey Deschanel al trabajar la temática de la abyección y la mujer en <em>Abject woman: the greatest horror of all</em>. Para ella lo grotesco proviene de la franqueza con la que trata al sexo y el cuerpo femenino, que hace que esté todo el tiempo rompiendo con lo que puede o no hacer el cuerpo de una mujer en la pantalla.</p>
+
+      <p>Hannah NO tiene un cuerpo diminuto y frágil (por más que ella lo desee así) y es, además, bastante asquerosa para lo que acostumbramos a ver en la televisión. Caga, eructa, se tira pedos, aparece sucia, pero no sucia de una manera hot a lo Megan Fox con aceite de motor en el escote y en la carita, sino sucia: remeras estiradas y manchadas, con el pelo grasoso después de un día entero de quedarse encerrada en la casa maquinando. El episodio al que me refiero es el del final de la segunda temporada, cuya trama gira en torno al TOC de Hannah, y es hasta el día de hoy considerado una de las mejores representaciones del tema en la media. Ahí también ella es grotesca. Se agarra la bombacha a través del vestido, se la estira y se golpea el culo con el elástico sin parar, gira la cabeza una determinada cantidad de veces, se escarba el oído hasta lastimarse, cae en un vórtice de pensamientos intrusivos que hacen que no se pueda concentrar en su tarea de escritora. Lo abyecto viene de la precariedad en la que vive, de cómo se comporta un cuerpo fuera de la norma en esas situaciones que desde lo económico hasta lo que respecta a su salud mental, son border.</p>
+
+      <figure class="nota-imagen">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778217242/WhatsApp_Image_2026-05-07_at_21.04.00_nohlzg.jpg" alt="Girls - Hannah">
+      </figure>
+
+      <p>Ya llegando a la parada tocamos el tema de la cultura Tumblr con la que nos criamos. Habré entrado a la red social por primera vez a los doce años. En ese tiempo me limitaba a los blogs de los libros de fantasía que me gustaban, pero de a poco me fueron apareciendo un tipo de imágenes que me resultaban perturbadoras pero fascinantes a la vez. Me acuerdo en específico de una chica cortándose la lengua con una navaja y abajo, en el pie de foto, te enseñaba cómo desarmar un sacapuntas para poder hacer lo mismo. Después esas imágenes se mezclaban con las de las Tumblr models y su aesthetic: fotos de sus pieles pálidas, sus manos delicadas sosteniendo un cigarrillo, su mirada perdida buscando mirar con cierta ausencia y melancolía a la cámara, sus cuerpos delgadísimos. Eso sí, siempre beboteando.</p>
+
+      <p>La figura máxima de esa época era Effy Stonem de la serie Skins. Ella fue el molde con el que le daríamos forma a la melancolía y caos de la adolescencia. Las compañeras de la escuela que llevaban la bandera de Skins eran también las que tenían un TCA y jugaban a emborracharse, algunas hasta a cortarse. Hoy en día, escribiendo esto, ya duplico la edad que tenía cuando me encontré en esos foros, y me pregunto cuánto de esas imágenes estoy repitiendo y sigo usando de modelo. ¿Cómo mierda nos libramos de ellas? Yo no creo que Bella Hadid haya posteado esa foto con esa intención, pero sí debe haber algo de placer inconsciente de ser la misma imagen que ella reblogueaba en 2012. Este tipo de imágenes, las que son "post lloradita", ¿por qué nos parecen tan lindas? ¿por qué posamos en ese estado de fragilidad y vulnerabilidad? No es solo porque se nos pida ser lindas todo el tiempo, sino porque esos imaginarios estéticos están tan arraigados en la cultura y se renuevan con tanta periodicidad que los reproducimos sin querer. En la serie documental <em>Ways of Seeing</em>, John Berger (1972) plantea que "los hombres observan, las mujeres se ven a sí mismas siendo observadas". Es por eso mismo que hasta llorando y a punto de matarte no podés dejar de mirarte a vos misma desde los ojos del otro. Así que te acomodás y les hacés piquito al público y su cámara.</p>
+
+      <figure class="nota-imagen">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778217824/WhatsApp_Image_2026-05-07_at_21.04.29_ishlce.jpg" alt="Imagen final">
+      </figure>
+
+      <p><strong>Bibliografía</strong><br>
+      Benjamin, Walter. (1989). <em>La obra de arte en la época de su reproductibilidad técnica</em>.<br>
+      Berger, John. (1972). <em>Ways of Seeing</em> [Serie documental]. BBC.<br>
+      Broey Deschanel. (2021). <em>Abject woman: the greatest horror of all</em> [Video]. <a href="https://www.youtube.com/watch?v=k1yfsfQphmo&t=892s" target="_blank">YouTube</a><br>
+      Bürger, Peter. (1987). <em>Teoría de la vanguardia</em>.<br>
+      Poe, Edgar Allan. <em>Método de composición</em>. <a href="http://www.ciudadseva.com/textos/teoria/opin/poe01.htm" target="_blank">ciudadseva.com</a><br>
+      Romanska, Magda. (2005). <em>NecrOphelia: Death, Femininity and the Making of Modern Aesthetics</em>.</p>
+
+    </div>
+
+  </article>
+
+  <!-- NOTA 2 — GINA TEBAY -->
+  <article class="nota">
+
+    <div class="nota-cabecera">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778217852/foto_d_perfil_gina-04_ibdjxe.png"
+           alt="Gina Tebay" class="nota-autor-foto">
+      <div class="nota-cabecera-texto">
+        <div class="nota-tipo">Ensayo</div>
+        <div class="nota-titulo">¿Estás preparadx para la experiencia?</div>
+        <div class="nota-autor-nombre">Gina Tebay</div>
+      </div>
+    </div>
+
+    <div class="nota-cuerpo">
+
+      <p>Fernanda Laguna escribió en el libro <em>How It Feels</em> de Tracey Emin que los temas de las obras no existen, que solo existe la experiencia. No es que la experiencia sea el resultado de una situación, sino que la situación y la experiencia van creándose juntas.</p>
+
+      <p>La política cultural de Fernanda y su manifiesto no escrito: poner en duda la calidad de lo que es bueno o malo. Predicar con el ejemplo su máximo anhelo: que cada persona haga sin pensar en la calidad… la lógica de hacer y hacer para luchar contra la racionalidad.</p>
+
+      <blockquote>
+        Laxagueborde, J. (2023). Prólogo. En F. Laguna, <em>Los 2000, ¿estás preparada para ser feliz?</em> Ivan Rosado.
+      </blockquote>
+
+      <p>Esto es clave para entender su obra y una coordenada para seguir sus recorridos artísticos.</p>
+
+      <p>Cuando la realidad social desborda, ¿qué espacio encuentra la experiencia para poder dar cuenta de algo?</p>
+
+      <p>En ese mismo libro de Tracey Emin, editado por el MALBA (2012), Fernanda Laguna sostiene que "una obra es la posibilidad de que una experiencia única sea rearmada dentro de otra persona". Asimismo, plantea que lo autorreferencial no se limita a narrar una anécdota, sino que implica transformar un hecho íntimo en un ritual colectivo, donde la experiencia se multiplica.</p>
+
+      <p>Estudiar la obra de la artista me significa entrar en un mundo que no sigue la norma: lo lindo es feo y lo feo es lindo. Ella reivindica el error, lo escatológico, se ríe de sí misma y encuentra en la calle los materiales para hacer sus obras.</p>
+
+      <blockquote>
+        Deseo un arte de cartón o de radiografías quemadas y pintadas con flores o palabras de amor. Yo quiero la igualdad. No puedo ser feliz si otros no lo son. No quiero que la gente no tenga plata, porque es horrible. Voy a luchar, no sé cómo… Las obras tienen que ser simples y económicas de hacer para generar intercambio. El arte ayuda a la autoestima. La gente tiene que creer que puede lograr cosas maravillosas para sentirse entusiasmada a hacerlas. Imaginar.
+        <br><br>
+        <em>F. Laguna, Los 2000, ¿estás preparada para ser feliz? Ivan Rosado.</em>
+      </blockquote>
+
+      <p>La angustia y la felicidad son dos temas que atraviesan su arte, y el corazón: un órgano firme, la guía de la toma de decisiones. En tiempos en donde la individualidad y la falta de políticas públicas nos quieren hacer creer que lo colectivo no es el medio para llegar a un fin, repensar su obra es importante. Leyendo sus diarios me contagio de entusiasmo y encuentro en sus palabras alternativas posibles para atravesar la realidad que por momentos me resulta demasiado triste.</p>
+
+      <p>Para Fernanda el arte es el lugar donde ella puede darse todos los gustos, pintar, escribir, usar brillantina, restos de objetos. Una vez la escuché decir que la escritura y la poesía son una red rosa, suave, en donde ella quiere vivir. ¿Dónde están esos espacios suaves? ¿Dónde los encontramos? ¿Cómo los creamos?</p>
+
+      <p>Sostener una ilusión, las ideas, crear con otrxs o en soledad. La búsqueda, el impulso, la pregunta como inicio infinito de algo. El intento fallido, correcto, azaroso, pero el intento al fin, que el cuerpo encarne la idea y se movilice.</p>
+
+      <p>En lo cotidiano habita el misterio, la obra que nunca es definitiva porque siempre se puede reconstruir con algo distinto cada vez. En el poema "Pierdo plata" del libro <em>Pañuelo de Mocos</em> escribe: "las cosas son palabras y las promesas de cosas también". ¿Cuáles son nuestras promesas en una realidad que nos quita las posibilidades? ¿Un futuro deseado? ¿Por qué creemos lo que nos prometen? ¿Las promesas se dicen en voz alta o cobran más sentido en silencio?</p>
+
+      <p>Una promesa es una palabra que todavía no existe, algo que habita más adelante. Cada vez que leo a Fernanda me anclo en las emociones y me gusta pensar que en las calles, en las plazas está el amparo de las falsas promesas.</p>
+
+      <p>Cuando voy caminando o en bicicleta busco la manera de ser más permeable a todo lo que me rodea. Deseo que la experiencia se me impregne para después crear algo, la artista dice que la clave es hacer, hacer y esperar. Hacer con otros, crear en conjunto.</p>
+
+      <p>¿Cuáles son las trincheras para crear algo? Pienso en los cuadernos, en las marchas, en los fanzines, en el encuentro con la escritura. En el encuentro con otrxs formamos la verdadera trinchera. En esos espacios se revela la imaginación para pensar alternativas y crear cosas nuevas.</p>
+
+      <p>Liliana Maresca decía "en el arte todo es posible", me pregunto si eso es verdad pero en realidad prefiero no saberlo y tomarlo como impulso, como una ilusión. Las ilusiones se construyen en la mente y las mías son influenciadas por las de lxs artistas que admiro y que me ayudan a transitar la vida. Artistas como Fernanda me brindan una brújula, y cuando leo sus poemas encuentro la voz de alguien que siente lo que escribe y vive lo que escribe. Esa es una forma de hacer arte y esa es la forma en la que elijo vivir.</p>
+
+    </div>
+
+    <!-- IMAGEN -->
+    <figure class="nota-imagen nota-imagen--medio">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778217834/collage_para_ensayo_Gina_Tebay_ttjvmo.jpg"
+           alt="Collage Gina Tebay">
+    </figure>
+
+    <!-- POEMA FINAL -->
+    <div class="nota-poema">
+      <p>tengo la intuición<br>
+      creo falsísima…<br>
+      de que existe una dimensión hermosa e inagotable<br>
+      donde todas las cosas<br>
+      se acomodan solas en los segundos,<br>
+      sobre las sombras de las tardes,<br>
+      sobre los pequeños árboles que son negros hasta el día.</p>
+      <span class="poema-autor">Fernanda Laguna — Fragmento del poema "Mata por mi que tú puedes"</span>
+    </div>
+
+  </article>
+
+  <!-- SIGUIENTE PÁGINA -->
+  <a class="sig-pagina" href="circular-n1-p5.html">
+    <div class="sig-pagina-icono">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6 L10 42 L38 42 L38 14 L30 6 Z"/>
+        <polyline points="30,6 30,14 38,14"/>
+        <line x1="16" y1="20" x2="32" y2="20"/>
+        <line x1="16" y1="26" x2="32" y2="26"/>
+        <line x1="16" y1="32" x2="26" y2="32"/>
+      </svg>
+    </div>
+    <span>Siguiente página</span>
+  </a>
+
+</body>
+</html>
