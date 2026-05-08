@@ -215,13 +215,19 @@
       font-size: 13px;
     }
 
-    /* ── SIGUIENTE PÁGINA ── */
-    .sig-pagina {
+    /* ── BOTONES NAVEGACIÓN PÁGINA ── */
+    .paginas-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      padding: 60px 0 80px;
+    }
+    .ant-pagina, .sig-pagina {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      padding: 60px 0 80px;
       text-decoration: none;
       color: var(--negro);
       font-family: var(--mono);
@@ -230,16 +236,12 @@
       letter-spacing: 2px;
       text-transform: uppercase;
     }
-    .sig-pagina-icono svg {
+    .ant-pagina:hover,
+    .sig-pagina:hover { opacity: 0.6; }
+    .ant-pagina-icono img, .sig-pagina-icono img {
       width: 48px;
       height: 48px;
-      fill: none;
-      stroke: var(--negro);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
-    .sig-pagina:hover { opacity: 0.6; }
   </style>
 </head>
 
@@ -249,13 +251,13 @@
   <header class="header">
     <div class="header__inner">
       <div class="header__logo">
-        <a href="index.html">
+        <a href="../index.html">
           <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Raída">
         </a>
       </div>
       <nav class="header__nav">
-        <a href="participa.html">Participá</a>
-        <a href="numeros.html">Números</a>
+        <a href="../participa.html">Participá</a>
+        <a href="../numeros.html">Números</a>
         <a href="#">Buscar</a>
       </nav>
     </div>
@@ -407,19 +409,21 @@
 
   </article>
 
-  <!-- SIGUIENTE PÁGINA -->
-  <a class="sig-pagina" href="circular-n1-p5.html">
-    <div class="sig-pagina-icono">
-      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 6 L10 42 L38 42 L38 14 L30 6 Z"/>
-        <polyline points="30,6 30,14 38,14"/>
-        <line x1="16" y1="20" x2="32" y2="20"/>
-        <line x1="16" y1="26" x2="32" y2="26"/>
-        <line x1="16" y1="32" x2="26" y2="32"/>
-      </svg>
-    </div>
-    <span>Siguiente página</span>
-  </a>
+  <!-- BOTONES NAVEGACIÓN -->
+  <div class="paginas-nav">
+    <a class="ant-pagina" href="circular-n1-p3.html">
+      <div class="ant-pagina-icono">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778253643/icono_pagina_anterior_ykf1ys.png" alt="Página anterior">
+      </div>
+      <span>Página anterior</span>
+    </a>
+    <a class="sig-pagina" href="circular-n1-p5.html">
+      <div class="sig-pagina-icono">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416965/icono_pasar_pagina-08_qqsuiw.png" alt="Siguiente página">
+      </div>
+      <span>Siguiente página</span>
+    </a>
+  </div>
 
 </body>
 </html>

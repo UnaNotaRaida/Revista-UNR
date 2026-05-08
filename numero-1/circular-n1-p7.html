@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cierre — Circular #1 — Una Nota Raída</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --crema: #faf7ef;
+      --azul:  #1a3cff;
+      --negro: #111;
+      --gris:  #555;
+      --gris-claro: #ddd;
+      --mono:  'JetBrains Mono', monospace;
+      --sans:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--crema);
+      color: var(--negro);
+    }
+
+    .header {
+      width: 100%;
+      height: 70px;
+      background-color: var(--azul);
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header__inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo img { height: 35px; width: auto; display: block; }
+    .header__nav a {
+      color: white;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-left: 25px;
+    }
+    .header__nav a:hover { text-decoration: underline; }
+
+    .pagina-meta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 30px 0;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+    }
+
+    .seccion-titulo {
+      max-width: 720px;
+      margin: 50px auto 0;
+      padding: 0 30px 12px;
+      border-bottom: 2px solid var(--negro);
+      text-align: center;
+    }
+    .seccion-titulo h1 {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .seccion-titulo .seccion-subtitulo {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 2px;
+      margin-top: 6px;
+    }
+
+    .cierre-contenido {
+      max-width: 720px;
+      margin: 60px auto;
+      padding: 0 30px;
+      text-align: center;
+    }
+
+    .cierre-contenido p {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      color: var(--negro);
+    }
+
+    .cierre-contenido em {
+      font-style: italic;
+    }
+
+    /* ── BOTONES DE CIERRE ── */
+    .botones-cierre {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 80px 30px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .boton-cierre {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: var(--negro);
+      transition: opacity 0.3s ease;
+    }
+
+    .boton-cierre:hover {
+      opacity: 0.6;
+    }
+
+    .boton-cierre-icono {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .boton-cierre-icono img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .boton-cierre-texto {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      max-width: 300px;
+      line-height: 1.6;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .header { padding: 0 16px; }
+      .header__nav a { margin-left: 14px; font-size: 11px; }
+
+      .pagina-meta { padding: 30px 16px 0; }
+      .seccion-titulo { padding: 0 16px 12px; }
+      .seccion-titulo h1 { font-size: 20px; }
+
+      .cierre-contenido {
+        margin: 40px auto;
+        padding: 0 16px;
+      }
+      .cierre-contenido p {
+        font-size: 14px;
+      }
+
+      .botones-cierre {
+        gap: 30px;
+        padding: 60px 16px;
+      }
+
+      .boton-cierre-icono {
+        width: 60px;
+        height: 60px;
+      }
+
+      .boton-cierre-texto {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="../index.html">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Raída">
+        </a>
+      </div>
+      <nav class="header__nav">
+        <a href="../participa.html">Participá</a>
+        <a href="../numeros.html">Números</a>
+        <a href="#">Buscar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- META -->
+  <div class="pagina-meta">
+    <span>7 de Mayo 2026</span>
+    <span>Número #1</span>
+  </div>
+
+  <!-- TÍTULO SECCIÓN -->
+  <div class="seccion-titulo">
+    <h1>Circular</h1>
+    <p class="seccion-subtitulo">Final y comienzo</p>
+  </div>
+
+  <!-- CONTENIDO DE CIERRE -->
+  <div class="cierre-contenido">
+    <p>Gracias por leer <em>Una Nota Raída</em>.</p>
+    <p>¿Querés ser parte de nuestros Raídes? Participá contestando la pregunta de Rizzoma, o envianos tu proyecto para el próximo número</p>
+  </div>
+
+  <!-- BOTONES DE CIERRE -->
+  <div class="botones-cierre">
+    <a href="../rizzoma.html" class="boton-cierre">
+      <div class="boton-cierre-icono">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777426755/Rueda-06_gu4lgi.png" alt="Rizzoma">
+      </div>
+      <div class="boton-cierre-texto">Entra en el espiral<br>Contestá la pregunta</div>
+    </a>
+
+    <a href="../participa.html" class="boton-cierre">
+      <div class="boton-cierre-icono">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Participá">
+      </div>
+      <div class="boton-cierre-texto">Mandá tu proyecto</div>
+    </a>
+  </div>
+
+</body>
+</html>
