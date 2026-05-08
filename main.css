@@ -93,3 +93,105 @@ p {
 .volver-patio a:hover img {
     transform: scale(1.1);
 }
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #faf7ef;
+}
+
+/* TIPOGRAFÍA */
+h1, h2, h3 {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* HEADER */
+.header {
+    width: 100%;
+    height: 70px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+}
+
+.header__inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO */
+.header__logo img {
+    height: 35px;
+}
+
+.header__nav a {
+    color: white !important;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-left: 25px;
+}
+
+/* VOLVER AL PATIO (GLOBAL) */
+.volver-patio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 60px 0;
+}
+
+.volver-patio p {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.volver-patio img {
+    width: 90px;
+    transition: transform 0.3s ease;
+}
+
+.volver-patio a:hover img {
+    transform: scale(1.1);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 0 16px;
+        height: 56px;
+    }
+
+    .header__logo img {
+        height: 26px;
+    }
+
+    .header__nav a {
+        font-size: 11px;
+        margin-left: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+}

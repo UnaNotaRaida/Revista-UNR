@@ -162,3 +162,244 @@ html, body {
     margin: 0;
     padding: 0;
 }
+/* =========================
+   LANDING BASE
+========================= */
+
+.landing {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fondo */
+.fondo {
+    position: relative;
+    z-index: 2;
+}
+
+.fondo img {
+    width: 100%;
+    display: block;
+}
+
+/* Texto "Explorá el patio" */
+.fondo h2 {
+    position: absolute;
+    top: 96px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    letter-spacing: 3px;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* =========================
+   LOGO CENTRAL
+========================= */
+
+.circulo-central {
+    position: absolute;
+    top: 210px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    z-index: 5;
+}
+
+.logo-centro {
+    width: 100%;
+    display: block;
+    mix-blend-mode: screen;
+}
+
+/* =========================
+   ZONAS CLICK (botones azules)
+========================= */
+
+.zona {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    background: #0000FF;
+    transition: all 0.6s ease;
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+/* TEXTO BOTONES */
+.zona-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    opacity: 0;
+    transition: opacity 0.6s ease 0.3s;
+
+    position: absolute;
+    width: 90%;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* posiciones desktop */
+.z1 { top: 54%; left: 38%; }
+.z2 { top: 39%; left: 56%; transform: translateX(-50%); }
+.z3 { bottom: 35%; left: 65%; }
+.z4 { bottom: 25%; right: 70%; }
+
+/* hover desktop */
+.zona:hover {
+    width: 143px;
+    height: 63px;
+}
+
+.zona:hover .zona-label {
+    opacity: 1;
+}
+
+/* =========================
+   REDES
+========================= */
+
+.social-links {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+    z-index: 6;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.social-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* =========================
+   NOTITA
+========================= */
+
+#notita {
+    position: fixed;
+    width: 140px;
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* =========================
+   COLOR DE ESTA PÁGINA
+========================= */
+
+body.pagina-landing {
+    background-color: #0000FF;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* El logo se achica y se posiciona relativo a la imagen */
+    .circulo-central {
+        width: 75vw;
+        top: 28vw;
+    }
+
+    /* Texto "Explorá el patio" */
+    .fondo h2 {
+        top: 58vw;
+        font-size: 3vw;
+        letter-spacing: 2px;
+    }
+
+    /* Las zonas pasan a ser botones visibles siempre,
+       apilados verticalmente abajo de la imagen */
+    .zona {
+        position: static;
+        width: 100%;
+        height: 52px;
+        transform: none !important;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        overflow: visible;
+    }
+
+    /* Mostramos las labels siempre en mobile */
+    .zona-label {
+        opacity: 1;
+        position: static;
+        font-size: 12px;
+        letter-spacing: 2px;
+        width: auto;
+    }
+
+    /* Agrupamos las zonas en un menú debajo del fondo */
+    .landing {
+        flex-direction: column;
+    }
+
+    /* Contenedor de zonas como menú */
+    .z1, .z2, .z3, .z4 {
+        order: 3; /* van después del fondo */
+    }
+
+    .fondo {
+        order: 1;
+    }
+
+    .circulo-central {
+        order: 0; /* se mantiene como overlay de la imagen */
+        position: absolute;
+    }
+
+    /* Redes: las subimos un poco para que no queden tapadas */
+    .social-links {
+        bottom: auto;
+        top: 68vw;
+        gap: 20px;
+    }
+
+    .social-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Notita más chica en mobile */
+    #notita {
+        width: 80px;
+    }
+}
