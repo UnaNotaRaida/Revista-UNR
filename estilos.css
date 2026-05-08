@@ -337,7 +337,7 @@ html, body {
     /* El logo se achica y se posiciona relativo a la imagen */
     .circulo-central {
         width: 75vw;
-        top: 28vw;
+        top: 20vw;
     }
 
     /* Texto "Explorá el patio" */
@@ -400,6 +400,6 @@ html, body {
 
     /* Notita más chica en mobile */
     #notita {
-        width: 80px;
+        width: 60px;
     }
 }
