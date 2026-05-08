@@ -72,3 +72,62 @@ body.pagina-numeros .volver-patio {
 body.pagina-numeros .volver-patio p {
     color: white;
 }
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    /* TÍTULO */
+    .numeros__titulo {
+        padding: 30px 20px 24px 20px;
+    }
+
+    .numeros__titulo img {
+        width: 65vw;
+        max-width: 260px;
+    }
+
+    /* GRILLA */
+    .numeros__grilla {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 28px;
+        align-items: center;
+    }
+
+    /* ITEMS */
+    .numero__item {
+        width: 100%;
+        max-width: 340px;
+        gap: 10px;
+    }
+
+    .numero__item span {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    /* IMÁGENES */
+    .numero__item img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* PROXIMO */
+    .proximo {
+        margin: 10px 0 0 0;
+        align-items: center;
+    }
+
+    .proximo img {
+        width: 120px;
+    }
+
+    /* VOLVER */
+    body.pagina-numeros .volver-patio {
+        margin-top: 50px;
+        padding-bottom: 40px;
+    }
+
+}
