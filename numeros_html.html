@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Números — Una Nota Raída</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="numeros.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body class="pagina-numeros">
+
+<div id="header"></div>
+<script>
+fetch('header.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header').innerHTML = data;
+  });
+</script>
+
+<main class="numeros">
+
+    <!-- TÍTULO -->
+    <div class="numeros__titulo">
+        <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778130009/numer_jzgmwi.png" alt="Números">
+    </div>
+
+    <!-- GRILLA -->
+    <div class="numeros__grilla">
+
+        <!-- NÚMERO 1 — ruta corregida -->
+        <a href="numero-1/numero1.html" class="numero__item">
+            <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778127757/tapaaa_t8apbn.png" alt="Número 1">
+            <span>Número #1</span>
+        </a>
+
+        <!-- PRÓXIMO -->
+        <div class="numero__item proximo">
+            <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778129006/prosimamente-03_runu9v.png" alt="Próximo número">
+            <span>Próximo número</span>
+        </div>
+
+    </div>
+
+    <!-- VOLVER AL PATIO -->
+    <div class="volver-patio">
+        <p>VOLVER AL PATIO</p>
+        <a href="index.html">
+            <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777421835/volver_al_patio_oaxqai.png" alt="Volver al patio">
+        </a>
+    </div>
+
+</main>
+
+</body>
+</html>
