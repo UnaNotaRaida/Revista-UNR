@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ciudad — Circular #1 — Una Nota Raída</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --crema: #faf7ef;
+      --azul:  #1a3cff;
+      --negro: #111;
+      --gris:  #555;
+      --gris-claro: #ddd;
+      --mono:  'JetBrains Mono', monospace;
+      --sans:  'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background-color: var(--crema);
+      color: var(--negro);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      height: 70px;
+      background-color: var(--azul);
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header__inner {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header__logo img { height: 35px; width: auto; display: block; }
+    .header__nav a {
+      color: white;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-left: 25px;
+    }
+    .header__nav a:hover { text-decoration: underline; }
+
+    /* ── META ── */
+    .pagina-meta {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 30px 0;
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── TÍTULO DE SECCIÓN ── */
+    .seccion-titulo {
+      max-width: 720px;
+      margin: 50px auto 0;
+      padding: 0 30px;
+      text-align: center;
+      border-bottom: 2px solid var(--negro);
+      padding-bottom: 12px;
+    }
+    .seccion-titulo h1 {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .seccion-subtitulo {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+      letter-spacing: 2px;
+      margin-top: 6px;
+    }
+
+    /* ── NOTA (contenedor general) ── */
+    .nota {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 30px;
+      border-bottom: 1px solid var(--gris-claro);
+    }
+    .nota:last-of-type {
+      border-bottom: none;
+    }
+
+    /* ── CABECERA DE NOTA ── */
+    .nota-cabecera {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .nota-autor-foto {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .nota-cabecera-texto {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .nota-titulo {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .nota-tipo {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--gris);
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .nota-autor-nombre {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--gris);
+    }
+
+    /* ── TEXTO ── */
+    .nota p {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 22px;
+      text-align: left;
+    }
+    .nota p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* ── SUBTÍTULOS DENTRO DE NOTA ── */
+    .nota h3 {
+      font-family: var(--mono);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1px;
+      margin: 36px 0 16px;
+    }
+
+    /* ── IMÁGENES DE OBRA ── */
+    .nota-imagen {
+      width: 100%;
+      margin: 32px 0;
+    }
+    .nota-imagen img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+    }
+    .nota-imagen figcaption {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gris);
+      letter-spacing: 0.5px;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* imagen más pequeña centrada (para obras individuales) */
+    .nota-imagen--medio {
+      max-width: 520px;
+      margin: 32px auto;
+    }
+
+    /* foto de autoras lado a lado */
+    .nota-autoras-foto {
+      width: 100%;
+      margin: 32px 0;
+    }
+    .nota-autoras-foto img {
+      width: 100%;
+      display: block;
+      border-radius: 2px;
+    }
+
+    /* ── NOTAS AL PIE ── */
+    .notas-pie {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 30px 20px;
+      border-top: 1px solid var(--gris-claro);
+    }
+    .notas-pie h4 {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gris);
+      margin-bottom: 16px;
+    }
+    .notas-pie ol {
+      padding-left: 20px;
+    }
+    .notas-pie ol li {
+      font-family: var(--sans);
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--gris);
+      margin-bottom: 6px;
+    }
+
+    /* ── BOTÓN SIGUIENTE PÁGINA ── */
+    .sig-pagina {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 50px 0 80px;
+      text-decoration: none;
+      color: var(--negro);
+    }
+    .sig-pagina:hover .sig-pagina-icono { transform: translateY(4px); }
+    .sig-pagina-icono { transition: transform 0.3s ease; }
+    .sig-pagina-icono svg {
+      width: 48px; height: 48px;
+      stroke: var(--negro); fill: none; stroke-width: 1.5;
+    }
+    .sig-pagina span {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .header { padding: 0 16px; }
+      .header__nav a { margin-left: 14px; font-size: 11px; }
+      .pagina-meta, .seccion-titulo, .nota, .notas-pie { padding-left: 16px; padding-right: 16px; }
+      .nota p { font-size: 15px; }
+      .nota-titulo { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="https://unanotaraida.github.io/Revista-UNR/index.html">
+          <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1777416966/logo-header_z3j5dy.png" alt="Una Nota Raída">
+        </a>
+      </div>
+      <nav class="header__nav">
+        <a href="https://unanotaraida.github.io/Revista-UNR/participa.html">Participá</a>
+        <a href="https://unanotaraida.github.io/Revista-UNR/ultimo.html">Revistas</a>
+        <a href="#">&#9906; Buscar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- META -->
+  <div class="pagina-meta">
+    <span>7 de Mayo 2026</span>
+    <span>Número #1</span>
+  </div>
+
+  <!-- TÍTULO SECCIÓN -->
+  <div class="seccion-titulo">
+    <h1>Ciudad</h1>
+    <p class="seccion-subtitulo">El encuentro con otros</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NOTA 1 — Caen los sueños
+  ════════════════════════════════════════════ -->
+  <article class="nota" id="ciudad-1">
+
+    <div class="nota-cabecera">
+      <img class="nota-autor-foto"
+           src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213761/fotos_de_perfil-07_j8dsa4.png"
+           alt="Gerónimo Tártara">
+      <div class="nota-cabecera-texto">
+        <div class="nota-tipo">Reseña</div>
+        <div class="nota-titulo">Caen los sueños. Muestra colectiva en RIOROSA, Crudo Rosario. Marzo 2026.</div>
+        <div class="nota-autor-nombre">Gerónimo Tártara</div>
+      </div>
+    </div>
+
+    <p><em>Artistas de la muestra: Valerie Valesska<sup>1</sup> · Mer Kala<sup>2</sup> · Lina Paratore<sup>3</sup></em></p>
+
+    <p>Estas palabras las escribo en ayuno, que es el único momento en que uno puede contar lo que soñó. Ayer me encontré visitando (¿o acaso soñando que visitaba?) un espacio íntimo y acogedor, un espacio que arropa con obras a quien lo visite, como sábanas suaves en la cama una noche de verano. Uno solo tiene que dejarse sumergir por la canción de cuna que susurran los lienzos, papeles y cartones que nos mecen en un sueño compartido.</p>
+
+    <p>Para describir la sensación inmersiva al entrar pienso en Diego Armando Maradona cuando dijo: "Nuestra habitación de chicos era tan chica que con mis hermanos soñábamos todos lo mismo". Al poner apenas un pie en la galería uno empieza a entregarse a un sueño de imágenes y formas, alturas y libros. Las tres artistas se fusionan entre sí para individualmente formular una muestra en unidad. Juntas, pero no revueltas, cada una mantiene su singularidad y espesa la atmósfera del espacio. Al entrar, el paso se amansa. Uno empieza a dar vueltas alrededor de una cama —la obra escultórica de Valerie— en un trance ininterrumpido donde cada giro revela un nuevo fragmento del sueño.</p>
+
+    <p>Quizás resulte tedioso el énfasis en la palabra sueño, pero es que además de ser un proceso biológico de descanso o de proyección de imágenes mentales, tener un sueño también es la esperanza que arrastra el porvenir y esta muestra tiene todo por delante. Esta es la primera muestra que aloja el espacio RIOROSA, marcando en simultáneo su fundación. Caen los sueños y se materializan (por eso me encuentro ahora en ayunas).</p>
+
+    <h3>Wynken, Blynken, and Nod</h3>
+
+    <p>En el segundo que pisé el desnivel (es un mínimo escalón que separa la recepción de RIOROSA de una sala cuadrada, donde se ubican la mayoría de las obras) me golpeó toda la nostalgia de la animación "Wynken, Blynken, and Nod", un corto animado de Disney de 1938 basado en un poema homónimo de Eugene Field, que pasaban en la televisión en épocas navideñas cuando yo tenía la edad de los niños animados que duermen en cuna.</p>
+
+    <p>En este corto animado de 8 minutos —este pequeño texto es una invitación para ir a verlo y volver— tres niños cansados navegan en un zapato de madera con velas de barco por el cielo pescando peces-estrellas. Al terminar el corto (y el poema hace lo mismo) Wynken y Blynken (guiñar y pestañar) son los ojos y Nod (asentir) es la cabeza de un mismo niño. Partes de un mismo sueño.</p>
+
+    <h3>Mer Kala</h3>
+
+    <p>Cuantas más vueltas (a la cama) le da uno, más se justifica esta (no tan) casualidad de mi recuerdo. Sobre el ancho de la pared que separa la recepción de la sala, hay una pintura de pequeño formato en la que Mer retrata ángeles soplando nubes sobre las que otra figura de pelo largo duerme con estrellas de fondo. En la animación son las nubes las que soplan la embarcación hasta romper las velas.</p>
+
+    <p>Quiero resaltar que esta obra de Mer, además de darle flashes nostálgicos a quien se adentra en la galería, nos invita a pensarnos en sueños, a ser partícipes del mundo onírico que propone Caen los sueños. En sus tres obras expuestas, Mer Kala nos invita a ser espectadores (o quizás soñadores) de sueños muy distintos pero claros.</p>
+
+    <p>En la segunda obra de Mer que puede verse caer, unas manos que aparecen por debajo de un árbol sostienen la cabeza de una niña que duerme plácidamente en un claro de un bosque. Las manos que sostienen nacen de un árbol de textura apacible, regular. El resto de la vegetación, como también el cielo y las sombras proyectadas por la niña y las manos son dramáticas, filosas. Nuestra parte despierta quiere avisarle que algo anda mal, que despierte, pero como en un sueño en el que no podemos correr, o que no podemos hablar, esta niña permanece quieta en el paisaje blanco y negro que amenaza a cada instante.</p>
+
+    <p>La última obra de ella en la muestra es un beso erótico de cuerpos que se desarman, que no saben si son parte del sueño, del recuerdo o de la realidad distorsionada por un cansancio o una droga. Las lenguas largas de ambas bocas no penetran, lamen y relamen entre sí, en una ternura que no suscita asombro en ninguna de las dos, quizás rutina, quizás otra pesadilla en la que los fuegos se apagan. O tal vez, la tranquilidad que da una ternura cotidiana. ¿Sueño o pesadilla?</p>
+
+    <figure class="nota-imagen">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213871/unnamed_lccjpx.jpg" alt="Nocturno 1 - Mercedes Fabbri">
+      <figcaption>Nocturno 1 · Mercedes Fabbri · Lápiz negro sobre papel · 33 × 23 cm · 2024</figcaption>
+    </figure>
+
+    <h3>Valerie Valesska</h3>
+
+    <p>Una cama de cartón es el centro de la muestra, el epicentro de un sueño que se expande infinitamente hacia adentro. Esta cama pone a prueba nuestra lucidez. Con su tamaño de cuna y su almohada de cartón, invita a arrojarse directamente sobre ella. Por suerte, entre el murmullo constante de las obras que susurran "estás durmiendo", algo nos retiene antes de arrojarnos enteros. En mi caso fue Paloma, pero dado lo intacta de esta obra todavía, algo nos detiene antes de siquiera pensar en sentarnos.</p>
+
+    <p>En la cama, dos elementos son fundamentales para pensar la fantasía en el resto de las obras: una cajita con libros —o quizás un cofre del tesoro de cartón— y una corona del mismo material colgada sobre los pies.</p>
+
+    <p>La presencia monótona, pequeña y frágil, contrasta abismalmente con las obras pictóricas de Valerie. En este mundo de los sueños pintados no existe lo monótono (o lo marrón), los colores se saturan en azules, violetas y magentas que con blancos logra destellos de luz en armaduras relucientes y con negros las sombras del abismo que pueden interrumpirse con ojos mirando de vuelta. La corona de cartón de picos triangulares e infantil se transforma en la pintura en picudas y complejas coronas blancas, donde universos de caballeros, esqueletos y fantasmas abundan. El bien parece siempre ganar, incluso si mientras soñamos nos arropa una frazada de cartón.</p>
+
+    <figure class="nota-imagen">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213870/unnamed_2_ygf9hr.jpg" alt="Cuatro esquinitas tiene mi cama - Valerie Valesska">
+      <figcaption>Cuatro esquinitas tiene mi cama · Valerie Valesska · Cartón y silicona · 96 × 160 × 94 cm · 2025</figcaption>
+    </figure>
+
+    <h3>Lina Paratore</h3>
+
+    <p>En el corto animado, Wynken, Blynken y Nod, los niños capturan una estrella fugaz que los arrastra por el cielo. En las pinturas de Lina, figuras abstractas de distintas materialidades —lápiz, pintura o aerosol— parecen ser estrellas fugaces escapando de nuestras manos oníricas, o quizás agujas escapando de sus hilos o quizás mundos microscópicos bajo nuestra mirada desnuda. Lina es simultáneamente el instante previo al sueño y el inmediatamente posterior (previo a la razón).</p>
+
+    <p>Uno no debe intentar explicar una obra que no intenta explicarse. Estas obras de Lina fluyen en la materia, las formas avanzan como cardúmenes de estrellas en el cielo o como corales en el fondo del espacio.</p>
+
+    <p>Estas obras, al menos en el contexto de la muestra Caen los sueños, se me aparecen con el movimiento en que las caras deformes de la oscuridad de la noche, avanzan y retroceden en las sombras, como los destellos de luces que se alucinan con el sol de la mañana filtrándose por las ventanas abiertas de una noche calurosa. Cuando el cerebro no comprende lo que ve ni intenta comprender, ahí es cuando las imágenes suceden en secuencia y nos tienen como un espectador entregado a los colores, a las texturas y al movimiento en loop de todo lo anterior.</p>
+
+    <p>Los umbrales de la razón están ahí para intentar dar la respuesta a las preguntas del ayer y para empezar a formular las preguntas del mañana.</p>
+
+    <p>Espero que a ustedes y a mí, el futuro nos encuentre visitando otra vez RIOROSA o algún otro sueño colectivo que se cae.</p>
+
+    <figure class="nota-imagen">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213872/unnamed_3_dmr18a.jpg" alt="Llovizna sobre el ojo de una aguja - Lina Paratore">
+      <figcaption>Llovizna sobre el ojo de una aguja · Lina Paratore · Acrílico, óleo, lápiz de color, óleo pastel sobre lienzo · 96 × 157 cm · 2024</figcaption>
+    </figure>
+
+  </article>
+
+  <!-- NOTAS AL PIE — Caen los sueños -->
+  <div class="notas-pie">
+    <h4>Notas — Caen los sueños</h4>
+    <ol>
+      <li>Oriunda de Venezuela y residente en Argentina desde 2019. Artista que pinta y construye escenas que a veces no le pertenecen, pero que de algún modo la atraviesan: memorias inventadas, afectos heredados, una especie de puente con su origen. (Extracto cortesía de Río Rosa Galería de Arte Contemporáneo)</li>
+      <li>Nació en Rosario en 1997. Estudió en la Facultad de Humanidades y Artes. Asistió al taller de dibujo Un Triángulo y Una Calavera y participó en diversas muestras colectivas de la ciudad, así como en el programa Taller Compartido de Crudo Arte Contemporáneo, en el año 2025. (Extracto cortesía de Río Rosa Galería de Arte Contemporáneo)</li>
+      <li>Venado Tuerto, Santa Fe, Argentina. Lina Paratore trabaja con la pintura y sus derivas; a su vez toca el violín y da clases del instrumento. Este cruce disciplinar la lleva a vincular el hacer compositivo pictórico con las lógicas orquestales de superposición de voces instrumentales, componiendo fraseos melódicos que terminan por traducirse en elementos visuales. Se recibió de Prof. de Artes Visuales en el 2019 y actualmente está desarrollando su tesina de la Lic. en Bellas Artes, en la UNR. (Extracto cortesía de Río Rosa Galería de Arte Contemporáneo)</li>
+    </ol>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       NOTA 2 — Cuack
+  ════════════════════════════════════════════ -->
+  <article class="nota" id="ciudad-2">
+
+    <div class="nota-cabecera">
+      <img class="nota-autor-foto"
+           src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213761/fotos_de_perfil-08_yocqix.png"
+           alt="Camila Busti">
+      <div class="nota-cabecera-texto">
+        <div class="nota-tipo">Obra visual</div>
+        <div class="nota-titulo">Cuack</div>
+        <div class="nota-autor-nombre">Camila Busti</div>
+      </div>
+    </div>
+
+    <p>Mi nombre es Camila Busti y tengo 25 años. Nací, me crié y vivo actualmente en la zona norte de Rosario. Me interesa hacer esta aclaración porque me gusta pensar que dentro de la ciudad existen "ciudades" más pequeñas, algunos los llamarán barrios, en donde la dinámica es diferente a la del centro: horarios diferentes (la hora de la siesta se respeta; hay más respiración espacial y ambiental). Soy egresada del profesorado en Bellas Artes de la UNR y estudiante del último año de la Licenciatura. Me considero una artista en formación debido a que no hace mucho tiempo comencé a pintar "para mí", o como yo lo llamo, a crear mis imágenes.</p>
+
+    <p>En esta ocasión les traigo una serie en la que vengo trabajando desde el año pasado en el taller de pintura al que asisto regularmente. En dicho lugar, el primer ejercicio que se realiza es la copia de la pintura de algún artista. Un día, en medio de esa duda e incertidumbre que aparece al tener enfrente el lienzo en blanco, me adueñé de esa acción de la copia. Pero esta vez fue desde otro lado, con una vuelta de tuerca incluída: en vez de copia, cita. El armado de la composición se basó en copiar los movimientos, la disposición de algunos elementos, pero agregándole un toque más "fantástico".</p>
+
+    <figure class="nota-imagen">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213840/20260405_010524_-_Camila_Busti_nhr0ts.jpg" alt="Cuack - Camila Busti">
+    </figure>
+
+    <p>Los personajes de esta serie no iban a ser los mismos que aparecen en las pinturas citadas, sino que iban a ser patos. ¿Por qué? No sé si realmente existe una sola respuesta a eso: siempre sentí fascinación por los patos. Estos animales forman parte del paisaje rosarino: recuerdo verlos nadando en el laguito Parque Independencia, comiendo las migas de pan que la gente les daba. La sustitución de los personajes humanos por patos hace frente a una cuestión de género: no representan estrictamente a hombres ni mujeres, permitiendo pensarlos como una especie de personajes queer con los que cualquiera puede sentirse identificado. La despersonalización permite otro tipo de identificación; los patos podemos ser todos: familia, amigos, compañeros, etc.</p>
+
+    <figure class="nota-imagen nota-imagen--medio">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213805/pato_1_mz4x0b.jpg" alt="Con los patos amigos - Camila Busti">
+      <figcaption>Con los patos amigos · Óleo sobre lienzo · 30×40 cm · 2025</figcaption>
+    </figure>
+
+    <p>Si se detienen a observar los artistas que he seleccionado en esta serie, podemos identificar que todos son hombres: Augusto Schiavoni, Eduardo Sívori, Edward Hopper. Este descubrimiento no es algo casual, ya que sabemos que los "grandes genios" impuestos por historia del arte hegemónica son hombres blancos cisgéneros, y eso inconscientemente condiciona muchas veces la elección de la cita. Aquí me gustaría citar a las Guerrilla Girls (1989) para cuestionarnos esos aprendizajes impuestos: "¿Tienen que estar desnudas las mujeres para entrar en el Metropolitan Museum? Menos de un 5% de los artistas de las secciones de arte moderno son mujeres, pero un 85% de los desnudos son femeninos."</p>
+
+    <figure class="nota-imagen nota-imagen--medio">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213838/pato_2_w37wno.jpg" alt="Sol de la mañana rosarina - Camila Busti">
+      <figcaption>Sol de la mañana rosarina · Óleo sobre lienzo · 20×20 · 2025</figcaption>
+    </figure>
+
+    <p>Los patos se encuentran envueltos dentro de un paisaje rosarino: la isla, el río, el puente, entre otros lugares típicos. Algunas problemáticas ambientales aparecen como detalles que el espectador puede contemplar si se detiene a observar: por ejemplo, en el cuadro de cita a Hopper aparecen pintados los incendios en las islas. Podemos pensar en ese personaje como un pato que tuvo que escapar de la destrucción de su tierra y que debió refugiarse en la urbanización, desolado. En fin, siento que los patos son personajes con múltiples significaciones e identificaciones para el imaginario rosarino. Es una serie que sigue en proceso. Cuack.</p>
+
+  </article>
+
+
+  <!-- ═══════════════════════════════════════════
+       NOTA 3 — Mujeres raídas y puestas
+  ════════════════════════════════════════════ -->
+  <article class="nota" id="ciudad-3">
+
+    <div class="nota-cabecera">
+      <div class="nota-cabecera-texto">
+        <div class="nota-tipo">Entrevista</div>
+        <div class="nota-titulo">Mujeres raídas y puestas</div>
+        <div class="nota-autor-nombre">Ariadna Gorosito e Irene Ercole</div>
+      </div>
+    </div>
+
+    <figure class="nota-autoras-foto">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213771/mujer_puesta_Por_favor_no_apaguen_mi_mente_no_intenten_ponerme_en_mi_lugar_yo_puedo_ser_la_ma_fz3vqd.jpg"
+           alt="Mujer Puesta">
+    </figure>
+
+    <p>Mujer Puesta es una obra de teatro escrita y dirigida por Ara Mainque. Inició como su trabajo de fin de curso en la Escuela de Teatro y Títeres de Rosario. Desde ese momento cuenta con un equipo formado íntegramente por mujeres: Ara, Candela Flores Moyano (asistencia escénica), Josefina Aberastegui (intérprete), Marian Gregoret (vestuario), Emilia Petean y Chiara Girolami (fotografía).</p>
+
+    <p>Mujer Puesta nos deja pensando, nos hace reflexionar sobre la locura, la femineidad y qué posibilidades tenemos las mujeres de transitarlas públicamente. Se presentan todos los domingos de mayo en Espacio Bravo. Antes de eso, con Nota Raída tuvimos el gusto de asistir a uno de sus ensayos y encontrarnos luego para esta entrevista-diálogo. Lo que sigue es sólo un recorte sobre lo que propusimos como formato a Ara y Cande entre los ruidos de la calle y la ciudad que nos vio nacer: Humanidades y Artes.</p>
+
+    <p><strong>Ari:</strong> Para empezar yo soy Ariadna, ella es Irene. Nosotras nos conocimos en la carrera de Gestión Cultural, junto con Cande. Estamos también junto con Fátima y Josefina. Quería agregar eso nomás... que tengo 22 años y no soy nadie en el mundo.</p>
+
+    <p><strong>Irene:</strong> ¿Tan existencialistas nos vamos a poner? Un poco queríamos arrancar con que nos cuenten quiénes son, qué quieren contar para quienes las lean, cómo llegaron a estudiar teatro, cuáles son sus intereses…</p>
+
+    <p><strong>Ara:</strong> Yo soy Ara Mainque, tengo 21 años ¡¡¡y tampoco soy nadieeee!!! Hago teatro, tengo luna en Géminis, así que pienso un montón y tengo ascendente en cáncer, entonces lloro por absolutamente todo y usualmente ese todo es el contexto. Soy directora de teatro, soy actriz, soy patrocinadora de teatro también, porque es lo que quiero realizar y una lo tiene que gestionar sola. Creé Mujer Puesta junto a mujeres soñadas… admirables. Es un proyecto que ya tengo en mente hace dos años, y a principios del año pasado arrancó a concretarse.</p>
+
+    <p>A la actriz la contacté un 29 de enero, en plenas vacaciones. Yo estaba en Brasil, y le comento: che, es mi último año en la carrera de dirección teatral, tengo que armar una obra de teatro… tengo estos puntos en mente, y solo te puedo imaginar a vos en el escenario. Ese fue mi mensaje a Jose. Después estaba manifestando a alguien que me pueda dar una mano con toda la idea y compartí una cena con Cande que nunca voy a olvidar. Mientras ella barría con sus cancanes decía: es que necesito hacer algo artístico, la técnica, algo, no sé, algo. Yo la miré a mi otra amiga que estaba en la habitación, y le dije: Cande ¿qué hacés los jueves a la noche?</p>
+
+    <p><strong>Cande:</strong> Yo soy Candela. Tengo varios años más que ustedes… tengo 26. Soy una señora puesta. Tampoco soy nadie. Estudié artes cuando terminé la escuela. Después dejé artes. Quise estudiar museología. No estudié museología. Estudié gestión cultural. Carrera que tengo en pausa. Me gusta todo lo que tiene que ver con las artes. Por eso estudié artes. No sabía que se podían estudiar otras cosas que no fueran artes plásticas.</p>
+
+    <p>Me gusta mucho poner la cabeza y el cuerpo en proyectos artísticos y culturales. El último en el que estuve antes de sumarme a la obra fue Casa Absenta. Duró más o menos un año. A partir de ahí me quedé con un vacío de querer estar en un proyecto.</p>
+
+    <p>En realidad, nos conocimos en Casa Absenta porque cuando quisimos hacer teatro en Casa Absenta Ara vino con su obra ¿Qué vas a hacer tan sola hoy?<sup>1</sup></p>
+
+    <p><strong>Ari:</strong> A mi me pasa algo escuchándolas que es que entiendo que lo que las terminó uniendo es este proceso de creación colectiva; como que hubo una chispa. Verdaderamente se nota mucho que hay amigas detrás del proyecto. ¿Creen que es explicable o no? ¿Es por las charlas que se fueron dando?</p>
+
+    <p><strong>Ara:</strong> Totalmente. Yo veo la obra como algo que existe más allá de nosotras. Entonces, nosotras nos encargamos de canalizar la obra. Es un pensamiento re flashero pero me encanta pensarlo porque hay ensayos donde Josefina hace algo que yo sé que no vino de mi palabra ni de la escenografía. Capaz lo atrajo, capaz lo manifestó un poquito, pero es la obra canalizándose en ella. Y con la amistad es mucho más fácil que funcione eso. Por una cuestión de que comprendo tu mundo poético.</p>
+
+    <p>Cuando nos conocimos no nos conocíamos tanto pero el irnos conociendo en los ensayos lo explica. Los ensayos de Mujer Puesta son ensayos muy personales. Muy personales. Porque tocamos temas fuertes.</p>
+
+    <p>Somos chicas jóvenes hablando de suicidio, hablando de la muerte, intentando encontrar nuestro deseo. Entonces hay una vulnerabilidad ya puesta en el texto, qué hace que nosotras hablemos de esos temas.</p>
+
+    <p><strong>Cande:</strong> A mí me pasó que yo dije, bueno, sí, voy a asistir a Ara en esta obra. ¿En qué estará trabajando? Yo no tenía idea. Cuando me manda el texto, me senté en el parque, abrí el documento en el celular y dije, bueno, voy a leer de qué se trata esto. Cuando lo leí dije, ¡ahhh! ¡La puchaaa! Primero pensaba ¿esto es un montón para ponerlo en un escenario? Por otro lado, pensaba tal cual, ¿quién no pensó esto? Y llegué al ensayo y le dije sí, soy yo. Y me dijo: somos todas. Conectar a partir de ahí me parece que es lo más natural.</p>
+
+    <p><strong>Ara:</strong> Eran 30 hojas de un texto post-dramático de Sarah Kane. Ese fue un punto de partida. Sarah Kane<sup>2</sup>, que en paz descanse, se ha suicidado. Y una de las piezas en la cual nuestra propuesta se basa es Psicosis 4.48<sup>3</sup>. Es una obra muy performática y está escrita rompiendo todo orden y estructura. Entonces vos leés eso y a la cabeza teatral se te vienen muchas cosas.</p>
+
+    <p>Nosotras tomamos ese texto y yo dije, yo quiero que esto sea un unipersonal. Yo quiero que esté Josefina sola en el escenario con sus pensamientos.</p>
+
+    <p>Y el punto de partida antes de que haya elenco, texto, yo me imaginaba una cabeza. Era una cabeza agrandándose y achicándose. Yo dije, ¿cómo hago que una actriz haga esto? Y… yo laburo sombras.</p>
+
+    <p>En sombras eso es muy fácil de realizar, pero al mismo tiempo es súper complejo cómo laburas una sombra. Pero con práctica te das cuenta de que si te acercás y te alejás a la luz tu cabeza se agranda y se achica. Y ahí dije, tengo a la chica puesta. Tengo a la chica que está enloqueciendo.</p>
+
+    <p><strong>Ari:</strong> Me encanta. Tengo varias preguntas para hacer pero me quedé pensando en ¿Cómo o cuándo sintieron, entendieron, que estaba ahí la representación de un concepto más grande, de una mujer que podemos decir somos todas?</p>
+
+    <p><strong>Ara:</strong> Primero honestamente fue un "soy yo", no te voy a mentir. Fue como soy yo, ya pasé por eso y ya lo puedo transmitir de otra manera. Y después me percaté, con ensayos abiertos, que todas salían diciendo "yo". Entonces, hablando con docentes, me doy cuenta de esta representación que acabo de hacer de muchas mujeres en distintos estados. Digo mujeres, pero porque otra persona de otro género o sexo no lo manifestó.</p>
+
+    <p>Pero al mismo tiempo sí tengo un cuidado con que no se genere esto de ¡Hi Barbie! ¡Hi Barbie! como todas somos Barbies. Porque Mujer Puesta no es una persona, no es alguien que te cruzas en el súper, es un estado que atravesás. Sos mujer y a veces estás puesta. Entonces no me gusta generalizar ese acabado de todas. Porque también tratamos temas complejos. Tratamos suicidios. Yo realmente no quiero que todas estén diciendo ¡¡yoo, a las 4.48 me mato!!</p>
+
+    <p><strong>Ari:</strong> Me quedé pensando en esto de los códigos comunes. Digo somos todas rosarinas, estudiantes, de alrededor de 20 años, conocemos los mismos términos. Pero parece como que a ustedes no les es una obra que sea sola para nosotras sino que puede estar abierta a muchas personas, a muchas mujeres…</p>
+
+    <p><strong>Ara:</strong> Ah, sí, totalmente. Ayer me dijeron una frase, fue hermosa, y no sé si la voy a citar bien pero bueno, es como que tu obra va a transmitir si esa persona un día se levantó y fue una cucaracha, y hay personas que se levantaron y no fueron un día cucaracha, entonces, capaz, que no la van a comprender tanto. Y nada, me quedé pensando en esa quote, que no sé si está bien quoteada.</p>
+
+    <p>Pero sí, están invitados todos los públicos, a mí me pasa que quiero que toda persona vea esto. Quiero que el mayor hater venga. No sé, que venga y observe. Quiero transmitir, atravesar, poner a pensar. No quiero gustar ¡gracias a Dios no quiero gustar! Eso está buenísimo. Pero sí te quedaste pensando en algo, te quedaste pensando en vos, en tu amiga, yo ya estoy muy chocha y siento que eso pasa. O a mí me pasa.</p>
+
+    <p><strong>Ari:</strong> Pensar qué dice de nuestro contexto crear Mujer Puesta hoy. Entiendo que también viene de una necesidad que tenías que recibirte. Pero si vamos más allá: ¿por qué mujer puesta? ¿Y por qué no: qué vas a hacer tan sola hoy? si vamos a tu repertorio.</p>
+
+    <p><strong>Ara:</strong> aaah "¿Qué vas a hacer tan sola hoy?<sup>1</sup>" ya ni me acuerdo. Chicos, tenía otro pelo. Yo ya no me acuerdo de eso. <strong>Cande:</strong> Venía por un lado bastante... <strong>Ara:</strong> Parecido sisis. Y es que soy una chica triste. No hay con qué darle. Soy una chica triste. Soy una chica melancólica. <strong>Cande:</strong> ¿Se puede ser otro tipo de chica en este contexto? <strong>Ara:</strong> ¿Se puede ser otro tipo de chica en este contexto? Sí, pasa también eso. O sea, vuelvo a hacer énfasis en que yo no pensé que la Cande, la actriz y mis amigas, iban a leer el texto y se iban a sentir identificadas. Posta no lo pensé. Yo lo arranqué a abordar con las docentes Paula García Jurado y Romina Mazzadi Arro que son dos mujeres increíbles. Ellas, junto a Elisabeth Usodio, son dueñas de Espacio Bravo<sup>4</sup> donde vamos a estar estrenando. Entonces, para mí es un ciclo de mujeres hermoso.</p>
+
+    <p>Yyy no sé, un poco pienso en la obra y en la exposición que está por recibir y tristemente es un reflejo de época. Sarah Kane también, cuando escribió este texto, del que usamos ciertas partes, ella dice como: yo no busco darte una moraleja ni enseñarte algo, yo solamente te vuelco mi sentir. Y siento que últimamente nos sentimos tristes. Hay un texto en Mujer Puesta que dice "estoy triste, no puedo coger, no puedo amar, no puedo pensar en los demás". Y lastimosamente veo a mi alrededor y estoy viendo eso.</p>
+
+    <p><strong>Cande:</strong> Estamos todas llorando en nuestras casas y creo que si la obra es incómoda es como es incómodo ver llorar a tu mamá, como es ver llorar a tu amiga o a tu hermanita. Y creo que hay algo que hablábamos antes de sí a una le genera incomodidad porque se encuentra en esa representación de mujer rota. También es porque no tenemos una representación y una visibilización de ese dolor de la mujer. Hablábamos antes con Ara de que la mujer triste siempre es representada bella y etérea. Entonces de repente poner una mujer que está hecha mierda y que se quiere matar arriba de un escenario, delante de un montón de personas, es incómodo, es fuerte y es necesario. Porque es necesario poder ver a una persona, a un personaje, al que le pasa lo mismo que le puede pasar a una o a sus amigas.</p>
+
+    <p><strong>Ari:</strong> Un poco seguido a lo otro del contexto que nos condiciona mucho. Bueno, también ¿cómo es crear Mujer Puesta siendo nosotras, siendo la realidad como es, la realidad rosarina de la nocturnidad, la escena teatral e independiente. ¿Cómo es hacerlo tangible?</p>
+
+    <p><strong>Ara:</strong> Los dólares de mis 15 años. Los dólares de mis 15 años, me hicieron comprar dólares y los puse en Mujer Puesta. <strong>Ari:</strong> Nos remitimos a lo que ya hablábamos antes off-record: "Mujer puesta en un proyecto endeudado".</p>
+
+    <p><strong>Ara:</strong> Sí, es muchísimo pulmón. Es muchísimo pulmón. Vendemos cosas para poder llevarlo a cabo. El INT, la Ley de Financiamiento del Teatro<sup>5</sup>, permite que haya salas independientes sustentadas por el INT. Eso hace que yo, por ejemplo, el estreno sea un 70-30. Que yo no tenga que pagar una sala. Que yo, una semana antes, no tenga que tener 100 lucas en el bolsillo para poder pagar la sala y después, capaz se me devuelve algo de las 100 lucas. Eso hace que hoy sea posible la temporada.</p>
+
+    <p>Y después, pulmón de cada integrante. Candela hizo un laburo espectacular. Las horas de ensayo de Josefina, las horas de ensayo mías. Ahora están siendo 6, 8 horas semanales que tenés que pagar porque hay que ensayar en un lugar pago. Porque en el living de tu casa te puede ayudar en cierto proceso, donde querés ver algo muy personal del personaje, pero después necesitas espacio. Y ese espacio está en El Refugio<sup>6</sup>. Ahora estamos ensayando en El Refugio<sup>6</sup> y en Casa Barik<sup>7</sup> que son espacios teatrales que te permiten, a un precio accesible, pagar por hora. Son de los pocos que quedan lastimosamente.</p>
+
+    <p><strong>Cande:</strong> Y rezando para que con alguna clase de ingreso que pueda llegar a partir de las funciones poder cubrir lo que se invirtió en la escenografía, en el vestuario.</p>
+
+    <p><strong>Ara:</strong> Sí, sí, sí. El vestuario, 300 lucas. En tela, hubo prueba y error. Ojalá a la primera hubiéramos acertado. Yo compré una tela, llegó Candela y me dijo, "¿qué era esta tela roja?" y tenía mucha razón, porque era fría y no brillaba. Pero compramos otra tela y la obra empezó a funcionar de otra manera. Ahora fuimos a un teatro más grande, compramos más tela, otras 200 lucas.</p>
+
+    <p>Y también son personas que te sostengan. El año pasado atravesamos una instancia de ensayos que estaban acompañados por docentes. Estaban acompañados por un grupo de amigos que te venían a ver y te decían, mira, en esta parte no me gusta esto, fíjate esto. Son correcciones que valen un montón. Y que no todo el teatro rosarino lo tiene. Por maneras, por formas también. Es como: ¿a qué tipo de teatro estamos apostando? ¿Queremos un teatro que solo sea nuestro punto de vista, nuestra dirección, lo que a mí como directora me parezca bien? ¿O está abierto a un debate, a un intercambio? Yo apuesto por un teatro donde se intercambie. Porque es lo que hace que esté vivo.</p>
+
+    <p><strong>Ari:</strong> Última, el espíritu de Nota Raída es un poco esas notas que cada una tenía en su bolsillo, guardadas, quizás olvidadas, y las pone en común con la otra y salen cosas hermosas. Entonces preguntarles, ¿cuál es el momento en el que ustedes pueden encontrar la Nota Raída de Mujer Puesta?</p>
+
+    <p><strong>Ara:</strong> Mujer Puesta siento que existe en mí hace años, desde el primer año de dirección. Es algo de una poética personal, que son mujeres. O sea, el nombre de Mujer Puesta viene porque en otros exámenes yo pensaba: no tengo títulos todavía, pero bueno, son mujeres, y bueno, Puesta en escena: Mujer Puesta. Y después pasaron los años, hice otras cosas, y volvió este concepto de que "¡ah, mirá! hay una mujer en el escenario, y está puestísima". Entonces volvió este nombre de Mujer Puesta.</p>
+
+    <p>Y después yo pienso en Mujer Puesta, y lo primero que se me viene a la cabeza es esta cabeza que se agranda y se achica. Se agranda y se achica.</p>
+
+    <p><strong>Cande:</strong> Para mí… no es una nota porque no es papel, pero es un pedacito de tela que encontré y me dije, esta quiero que sea la tela de la obra. De ahí en más la llevaba en el bolsillo de la campera, la iba tocando e iba entrando a las casas de tela para preguntar: ¿Una tela como esta? no sé cómo se llama. Tela como esta por metro, ¿y cuánto sale? Para mí es eso. Esa es la nota.</p>
+
+    <p><strong>Iren y Ari:</strong> ¡¡Gracias!!. Viva Rosario, viva nosotras. Mujeres Raídas y Puestas.</p>
+
+    <figure class="nota-imagen nota-imagen--medio" style="margin-top: 40px;">
+      <img src="https://res.cloudinary.com/dblpwixyc/image/upload/v1778213772/GACETILLA_DE_PRENSA_MUJER_PUESTA_-_Arita_Diaz_page-0001_kq2q2j.jpg"
+           alt="Gacetilla Mujer Puesta">
+    </figure>
+
+  </article>
+
+  <!-- NOTAS AL PIE — Mujeres raídas y puestas -->
+  <div class="notas-pie">
+    <h4>Notas — Mujeres raídas y puestas</h4>
+    <ol>
+      <li>Obra de teatro pensada para su estreno en el ciclo Cranea en junio 2024. Desde Cranea afirmaban: "Es un recorrido con historias cegadas por la luz de la soledad y portazos que despiertan la necesidad de ser amados, como una ilusión lejana que se prende y se apaga". <a href="https://www.instagram.com/p/C8APqsvxKtS/" target="_blank">Instagram</a></li>
+      <li>Sarah Kane (Essex, 3 de febrero de 1971 – Londres, 20 de febrero de 1999) fue una dramaturga británica conocida por sus obras que tratan temas del amor redentor, el deseo sexual, el dolor, la tortura tanto física como psicológica, y la muerte. <a href="https://es.wikipedia.org/wiki/Sarah_Kane" target="_blank">Wikipedia</a></li>
+      <li>La obra teatral más corta y fragmentada de Kane, prescinde de la trama y el personaje, y no se da ninguna indicación de cuántos actores estaban destinados a expresar la obra. Escrita en un momento en que Kane sufría de una depresión severa, su compañero dramaturgo y amigo David Greig la ha descrito como tema de la "mente psicótica". <a href="https://es.wikipedia.org/wiki/Sarah_Kane#4.48_Psicosis" target="_blank">Wikipedia</a></li>
+      <li>Sala de teatro independiente ubicada en Catamarca 3624. <a href="https://www.instagram.com/espacio.bravo.teatro/" target="_blank">Instagram</a></li>
+      <li>Ley 24.800 sancionada en 1997 para la promoción y apoyo estatal al teatro independiente. Además creó el Instituto Nacional del Teatro. <a href="https://servicios.infoleg.gob.ar/infolegInternet/anexos/40000-44999/42762/norma.htm" target="_blank">Texto de la ley</a></li>
+      <li>Sala de teatro independiente ubicada en Urquiza 2641. <a href="https://www.instagram.com/elrefugioteatro/" target="_blank">Instagram</a></li>
+      <li>Sala de ensayo teatral ubicada en San Juan 3292. <a href="https://www.instagram.com/casabarik/" target="_blank">Instagram</a></li>
+    </ol>
+  </div>
+
+  <!-- BOTÓN SIGUIENTE PÁGINA -->
+  <a class="sig-pagina" href="circular-n1-p4.html">
+    <div class="sig-pagina-icono">
+      <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6 L10 42 L38 42 L38 14 L30 6 Z"/>
+        <polyline points="30,6 30,14 38,14"/>
+        <line x1="16" y1="20" x2="32" y2="20"/>
+        <line x1="16" y1="26" x2="32" y2="26"/>
+        <line x1="16" y1="32" x2="26" y2="32"/>
+      </svg>
+    </div>
+    <span>Siguiente página</span>
+  </a>
+
+</body>
+</html>
